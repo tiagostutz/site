@@ -8,7 +8,7 @@ services:
   www_novo_servidoradv:
     image: nginx:alpine
     volumes:
-      - /var/app/site/novo/src:/usr/share/nginx/html:ro
+      - /var/app/site/site:/usr/share/nginx/html:ro
 
     networks:
       - balancer_site_network
