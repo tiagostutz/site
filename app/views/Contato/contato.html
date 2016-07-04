@@ -1,0 +1,212 @@
+﻿<div class="content">
+    <div class="form-contato">
+        <form name="form" id="conversion-form" action="https://servidorapi.azurewebsites.net/api/contatos/criar" method="POST">
+            <input name="identificador" type="hidden" value="contato-site">
+            <ul>
+                <li>
+                    <input placeholder="SEU NOME" type="text" name="nome" id="nome" onblur="validaBotaoEnviar()" size="30" maxlength="50">
+                </li>
+                <li>
+                    <input placeholder="E-MAIL PARA RETORNO DO CONTATO" type="text" id="email" onblur="validaBotaoEnviar()" name="email" size="30" maxlength="50">
+                </li>
+                <li>
+                    <input placeholder="TELEFONE PARA RETORNO DO CONTATO" type="text" onblur="validaBotaoEnviar()" id="telefone" name="telefone"
+                           size="30" maxlength="50">
+                </li>
+                <li>
+                    <div class="customselect">
+                        <select id="especialidade" placeholder="Seu contato é sobre..." name="especialidade">
+                            <option value="Indefinido">Qual seu perfil?</option>
+                            <option value="Concurso Público">Concurso Público</option>
+                            <option value="Servidor Ativo">Servidor Ativo</option>
+                            <option value="Servidor Aposentado">Servidor Aposentado</option>
+                            <option value="Entidades de classe">Entidades de classe</option>
+                        </select>
+                    </div>
+                </li>
+                <li id="divOrgao" style="display:none">
+                    <input placeholder="&#211;RG&#195;O" type="text" id="orgao" onblur="validaBotaoEnviar()" name="orgao"
+                           size="30"  maxlength="50">
+                </li>
+                <li id="divQualConcurso" style="display:none">
+                    <input placeholder="QUAL CONCURSO?" type="text" id="qualconcurso" onblur="validaBotaoEnviar()" name="qualconcurso"
+                           size="30"  maxlength="50">
+                </li>
+                <li id="divEntidade" style="display:none">
+                    <input placeholder="NOME DA ENTIDADE" type="text" id="entidade" onblur="validaBotaoEnviar()" name="entidade"
+                           size="30"  maxlength="50">
+                </li>
+                <li>
+                    <textarea placeholder="Mensagem" name="mensagem" onblur="validaBotaoEnviar()" rows="12" cols="44" maxlength="4000" style="text-transform: inherit; font-style: normal; font-family: 'Avenir Next', sans-serif"></textarea>
+                </li>
+            </ul>
+            <div id="mensagem_erro">
+            </div>
+            <div class="actions" align="center" style="margin-top: 20px;">
+                <div class="col span_4_of_12"></div>
+                <input type="hidden" name="origem_contato" id="origemContatoHidden" value="acesso direto" />
+                <script>
+                    if (window.location.href.indexOf("/ref/") != -1) {
+                        $("#origemContatoHidden").val(window.location.href.substring(window.location.href.indexOf("/ref/") + 5));
+                    } else {
+                        $("#origemContatoHidden").val("Acesso direto");
+                    }
+                </script>
+                <input type="hidden" name="c_utmz" id="c_utmz" value="" />
+                <script type="text/javascript">
+                    function read_cookie(a) { var b = a + "="; var c = document.cookie.split(";"); for (var d = 0; d < c.length; d++) { var e = c[d]; while (e.charAt(0) == " ") e = e.substring(1, e.length); if (e.indexOf(b) == 0) { return e.substring(b.length, e.length) } } return null } try { document.getElementById("c_utmz").value = read_cookie("__utmz") } catch (err) { }
+                </script>
+                <input id="cf_submit" class="enviar" type="submit" value="ENVIAR MENSAGEM" />
+                <div class="clear"></div>
+            </div>
+        </form>
+        <script>
+
+            function validaBotaoEnviar()
+            {
+                if ($("#cf_submit").val() == "Obrigado, em breve retornaremos seu contato!")
+                {
+                    $("#cf_submit").val("Enviar Mensagem");
+                    $("#cf_submit").removeClass("button-success");
+                    $("#cf_submit").removeClass("button-busy");
+                    $("#cf_submit").removeAttr("disabled");
+                }
+            }
+
+            function createCookie(a, b, c) {
+                if (c) {
+                    var d = new Date;
+                    d.setTime(d.getTime() + c * 24 * 60 * 60 * 1e3);
+                    var e = "; expires=" + d.toGMTString()
+                } else var e = "";
+                document.cookie = a + "=" + b + e + "; path=/"
+            }
+
+            function readCookie(a) {
+                var b = a + "=";
+                var c = document.cookie.split(";");
+                for (var d = 0; d < c.length; d++) {
+                    var e = c[d];
+                    while (e.charAt(0) == " ") e = e.substring(1, e.length);
+                    if (e.indexOf(b) == 0) return e.substring(b.length, e.length)
+                }
+                return null
+            }
+
+            function eraseCookie(a) {
+                createCookie(a, "", -1)
+            }
+
+            function saveConversion() { }
+
+            function setUtmzVal() {
+                try {
+                    var a = readCookie("__utmz");
+                    $("input[type=hidden][name=c_utmz]").val(a)
+                } catch (b) { }
+            }
+
+            function conversionSuccess(a) {
+                $("#cf_submit").attr("value", "Obrigado, em breve retornaremos seu contato!");
+                $("#cf_submit").addClass("button-success");
+                $("#cf_submit").closest('form').find("input[type=text], textarea").val("");
+                ga('send', {
+                    'hitType': 'pageview',
+                    'page': '/contato-enviado',
+                    'title': 'Obrigado pelo seu contato'
+                });
+            }
+
+            function conversionError(a) {
+                $("#cf_submit").attr("value", "Erro ao enviar mensagem");
+                $("#cf_submit").removeAttr("disabled");
+                $("#cf_submit").addClass("button-error")
+            }
+
+            function parseRDR(a) { }
+
+            function preSubmit(formData) {
+                var queryString = $.param(formData);
+                var erros = "";
+                if ($("#nome").val().length == 0 || $("#nome").val().trim() == "") {
+                    erros += "<p>Preencha o <strong>NOME</strong>, por favor</p>";
+                }
+                if ($("#email").val().length == 0 || $("#email").val().trim() == "") {
+                    erros += "<p>Preencha o <strong>E-MAIL</strong>, por favor</p>";
+                }
+                if ($("#telefone").val().length == 0 || $("#telefone").val().trim() == "") {
+                    erros += "<p>Preencha o número do seu <strong>TELEFONE</strong>, por favor</p>";
+                }
+
+                if ($("#especialidade").val() == "Concurso Público")
+                {
+                    if ($("#qualconcurso").val().length == 0 || $("#qualconcurso").val().trim() == "") {
+                        erros += "<p>Preencha o <strong>CONCURSO</strong>, por favor</p>";
+                    }
+                }
+
+                $("#mensagem_erro").html("");
+                if (erros.length > 0) {
+                    $("#mensagem_erro").html(erros);
+                    return false;
+                } else {
+                    $("#cf_submit").attr("value", "Aguarde. Enviando mensagem...");
+                    $("#cf_submit").attr("disabled", "disabled");
+                    $("#cf_submit").addClass("button-busy");
+                    return true;
+                }
+            }
+
+            function ajaxCb(a) {
+                if (a.status === 200) {
+                    conversionSuccess(a)
+                } else {
+                    conversionError(a)
+                }
+            }
+            if (typeof console == "undefined" || typeof console.log == "undefined") var console = {
+                log: function () { }
+            };
+
+            $(document).ready(function (a) {
+                setUtmzVal();
+                var formData = new FormData(this);
+                var d = $("#conversion-form").attr("action");
+                var e = {
+                    url: d,
+                    type: "GET",
+                    dataType: "script",
+                    beforeSubmit: preSubmit,
+                    complete: ajaxCb
+                };
+                $("#conversion-form").ajaxForm(e);
+            });
+
+            $("#especialidade").change(function () {
+
+                $("#divOrgao").attr('style', 'display:none');
+                $("#divQualConcurso").attr('style', 'display:none');
+                $("#divEntidade").attr('style', 'display:none');
+
+                $("#qualconcurso").val("");
+                $("#entidade").val("");
+                $("#orgao").val("");
+
+                if ($("#especialidade").val() == "Concurso Público")
+                    $("#divQualConcurso").removeAttr('style');
+                else if ($("#especialidade").val() == "Entidades de classe")
+                    $("#divEntidade").removeAttr('style');
+                else
+                    $("#divOrgao").removeAttr('style');
+
+
+            });
+
+            $("#link_contato").click(function () {
+                location.reload();
+            });
+        </script>
+    </div>
+
+
+</div>

@@ -1,0 +1,218 @@
+﻿<div class="content">
+    <article id="interesses-mobile">
+        <div class="box-itens-escritorio box-itens-campos box-itens-camposdeinteresse">
+            <div class="campos_interesse_menu">
+                <div class="dis">
+                    <ul id="owl-demo2" class="owl-carousel owl-theme menuCamposInteresse">
+                        <li ng-class="prerrogativaMenuCSS">
+                            <a href="/site#/camposdeinteresse/defesa-de-prerrogativas" title="Defesa de prerrogativas">
+                                <img src="http://servidor.adv.br/img/ui/defesa_prerrogativas.svg">
+
+                            </a>
+                        </li>
+                        <li ng-class="socialMenuCSS">
+                            <a href="/site#/camposdeinteresse/seguridade-social" title="Seguridade social">
+                                <img src="http://servidor.adv.br/img/ui/seguridade_social.svg">
+
+                            </a>
+                        </li>
+                        <li ng-class="disciplinaMenuCSS">
+                            <a href="/site#/camposdeinteresse/disciplina-probidade-e-contas" title="Disciplina, probidade e contas">
+                                <img src="http://servidor.adv.br/img/ui/disciplina_probidade_contas.svg">
+
+                            </a>
+                        </li>
+                        <li ng-class="exercicioMenuCSS">
+                            <a href="/site#/camposdeinteresse/exercicio-e-afastamento" title="Exercício e afastamento">
+                                <img src="http://servidor.adv.br/img/ui/exercicio_afastamento.svg">
+                            </a>
+                        </li>
+                        <li ng-class="segurancaMenuCSS">
+                            <a href="/site#/camposdeinteresse/saude-e-seguranca-do-trabalho" title="Saúde e segurança no trabalho">
+                                <img src="http://servidor.adv.br/img/ui/saude_seguranca_trabalho.svg">
+
+                            </a>
+                        </li>
+                        <li ng-class="remuneracaoMenuCSS">
+                            <a href="/site#/camposdeinteresse/remuneracao" title="Remuneração">
+                                <img src="http://servidor.adv.br/img/ui/remuneracao.svg">
+
+                            </a>
+                        </li>
+                        <li ng-class="tributoMenuCSS" class="active">
+                            <a href="/site#/camposdeinteresse/tributos" title="Tributos">
+                                <img src="http://servidor.adv.br/img/ui/tributos.svg">
+
+                            </a>
+                        </li>
+                        <li ng-class="selecaoMenuCSS">
+                            <a href="/site#/camposdeinteresse/selecao-e-provimento" title="Seleção e provimento">
+                                <img src="http://servidor.adv.br/img/ui/selecao_provimento.svg">
+
+                            </a>
+                        </li>
+                        <li ng-class="sindicalMenuCSS">
+                            <a href="/site#/camposdeinteresse/liberdade-sindical-e-associativa" title="Liberdade sindical e associativa">
+                                <img src="http://servidor.adv.br/img/ui/liberdade_sindical_associativa.svg">
+
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="campos_interesse_exemplos" style="width: 100%;float: none;">
+                <section>
+                    <h2 style="line-height: 35px;"><span>{{item.detalhamento}}</span></h2>
+                    <p class="interesses-descricao" ng-bind-html="item.descricao"></p>
+                </section>
+                <section ng-style="{'background-image':'url('+ item.imagemfundoAspas + ')'}" style="color: white;padding: 2rem;background-position-y: 0px;background-repeat: repeat-y;background-size: cover;">
+                    <h2 class="title-banner-interesse" style="color: white">
+                        "<q style="background: rgba(44, 31, 31, 0.8)" ng-bind-html="item.aspasdeDestaque[0].texto" class="ng-binding"></q>"
+                    </h2>
+                    <ul>
+                        <li style="margin-left: 12px;">
+                            <a ng-href="/#/contato/ref/{{tituloPaginaURL}}/aspas/" style="text-decoration: none" href="/#/contato/ref/{{tituloPaginaURL}}/aspas/">
+                                <div class="calltoaction">Você também tem essa dúvida? </div>
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+                <section id="exemplosCampoInteresse">
+                    <h2 class="text-center">CONFIRA ABAIXO MAIS EXEMPLOS SOBRE ESSE ASSUNTO</h2>
+                    <ul class="exemplos">
+                        <li ng-repeat="exemplo in exemplos">
+                            <div class="wrapper">
+                                <h3 class="ng-binding">{{exemplo.title}}</h3>
+                                <div ng-bind-html="exemplo.texto" class="ng-binding"></div>
+                                <div class="link">
+                                    <a ng-href="/#/contato/ref/{{tituloPaginaURL}}/exemplo/{{exemplo.url}}" href="/#/contato/ref/{{tituloPaginaURL}}/exemplo/{{exemplo.url}}">quer mais informações?</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </article>
+</div>
+<section id="camposInteresse" class="camposInteresse-branco" ng-controller="CamposdeInteresseCtrl">
+    <div class="content">
+        <h2 style="font-family: 'Open Sans Condensed', sans-serif;font-size: 28px;text-align:center">VOCÊ TEM OUTRO INTERESSE?</h2>
+
+        <nav>
+            <ul class="list-inline" style="text-align: center; margin: 0 auto; float: none;display: inline-block;">
+                <li ng-repeat="resultado in lista">
+                    <a href="/#/camposdeinteresse/{{resultado.url}}">
+                        <img src="{{resultado.imagem}}" /><p>{{resultado.title}}</p>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</section>
+<section id="perfis">
+    <div class="content segmentos">
+        <div class="col-md-11" style="text-align: center; margin: 0 auto; float: none;">
+            <h2>Qual é o seu perfil?</h2>
+            <ul class="list-inline">
+                <li><a href="/#/segmentos/entidades-de-classe"><img src="/app/img-site/entidades_classe_selected.svg" /><p>entidades de classe</p></a></li>
+                <li><a href="/#/segmentos/candidatos-a-cargo-publico"><img src="/app/img-site/candidato_cargo_publico_selected.svg" /><p>concursos públicos</p></a></li>
+                <li><a href="/#/segmentos/servidores-ativos"><img src="/app/img-site/servidores_ativa_selected.svg" /><p>servidores ativos</p></a></li>
+                <li><a href="/#/segmentos/servidores-inativos"><img src="/app/img-site/aposentadoria_selected.svg" /><p>servidores aposentados</p></a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+<style>
+    section .title-banner-interesse {
+        line-height: 37px;
+    }
+
+    section#perfis {
+        position: initial !important;
+    }
+
+    section#camposInteresse {
+        float: none;
+    }
+
+    #interesses-mobile .box-itens-campos .campos_interesse_menu
+    {
+        float:none;
+    }
+
+    #owl-demo2 .owl-pagination
+    {
+        margin-top:20px;
+    }
+
+    .owl-theme .owl-controls .owl-page span
+    {
+        background:#891828!important;
+    }
+
+    #owl-demo2 .owl-next, .owl-prev
+    {
+        color:#891828!important;
+        margin-top:0px;
+        margin-bottom:0px;
+    }
+
+    .owl-theme .owl-controls .owl-buttons div
+    {
+        margin-top:0px;
+        margin-bottom:0px;
+    }
+
+</style>
+<script type="text/javascript">
+
+    verificaCampoAtual();
+
+    $('html, body').animate({ scrollTop: $("#header").offset().top }, 1000);
+
+    function verificaCampoAtual() {
+        var url = window.location.href.split('/')[6];
+
+        $(".menuCamposInteresse li").attr('class', '');
+
+        $(".menuCamposInteresse li").each(function () {
+            var urlLink = $(this).find("a").attr('href').split('/')[3];
+
+            if (url == urlLink)
+                $(this).attr('class', 'active');
+        });
+
+    }
+
+    var larguraTela = $(window).width();
+
+    if (larguraTela < 980) {
+
+        var owl = $("#owl-demo2").owlCarousel({
+            itemsCustom: [
+              [0, 3],
+              [450, 3],
+              [600, 4],
+              [700, 4],
+              [1000, 4],
+              [1200, 4],
+              [1400, 5],
+              [1600, 6]
+            ],
+            navigation: true,
+            navigationText: ["&lt;", "&gt"]
+        });
+
+        
+    }
+    else {
+
+        $(".owl-carousel").attr('style', 'display:block');
+        $(".campos_interesse_menu").attr('style', 'float:left');
+    }
+
+    $(".dis").css('display', 'block');
+
+</script>

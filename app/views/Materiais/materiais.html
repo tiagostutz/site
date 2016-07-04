@@ -1,0 +1,21 @@
+﻿<section id="cabecalho-paginas">
+    <div class="box-itens-escritorio">
+        <h2>E-BOOKS E INFOGRÁFICOS</h2>
+    </div>
+</section>
+<div class="content">
+    <div class="row">
+        <div class="col-md-12 col-xs-12 pagina-bgbranco">
+            <div class="text-align" ng-show="loading"><img src="/app/themes/img/facebook.gif" style="position: relative;top: 10px;margin-right: 10px;" /></div>
+            <ul class="ebooks">
+                <li ng-repeat="item in lista" class="text-center">
+                    <a ng-href="{{item.urlLandingPage}}">
+                        <img ng-src="{{item.url}}" />
+                        <p ng-bind="item.title"></p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+

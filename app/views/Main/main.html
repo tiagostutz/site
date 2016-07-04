@@ -1,0 +1,1355 @@
+<style type="text/css">
+    .banners-home {
+        opacity: 0.6;
+        float: left;
+        position: relative !important;
+    }
+
+    .banners-home-active {
+        opacity: 1.0;
+    }
+
+    #banners .content {
+        width: 90%;
+    }
+
+    #colunas2 {
+        top: -610px !important;
+    }
+
+    #banners-next {
+        padding: 50px 0px;
+        position: absolute;
+        top: 60%;
+        right: 20px;
+        z-index:50000;
+    }
+
+    #banners-prev {
+        padding: 50px 0px;
+        position: absolute;
+        top: 60%;
+        left: 20px;
+        z-index:50000;
+    }
+
+    .banners-caption {
+        margin: 10px;
+        text-align: center;
+    }
+
+        .banners-caption a {
+            display: inline-block;
+            padding: 5px;
+            margin: 2px;
+            text-indent: -999px;
+            cursor: pointer;
+            background-color: #efefef;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+</style>
+
+<div id="wrapper-banners" ng-controller="UtilidadeCtrl">
+    <div style="text-align:center" ng-show="loading"><img src="/app/themes/img/facebook.gif" style="position: relative;top: 10px;display:normal" /><br /><br /><small>Carregando conteúdo...</small></div>
+
+    <section id="banners" style="height: 650px;overflow: hidden;" ng-show="isLoaded">
+        <div class="banners-wrapper">
+            <div id="colunas1" class="campos-de-interesse box-itens-escritorio banners-home banners-home-active" style="float:left">
+                <div class="content">
+                    <div ng-show="isLoaded" class="bannersMain">
+                        <div class="colunas-linha-1">
+                            <div class="colunas-home coluna-1" ng-hide="hasColuna1"></div>
+                            <div class="colunas-home coluna-1" ng-show="hasColuna1">
+                                <a ng-click="abrirUrl(coluna1[0].url, coluna1[0].fonte)">
+                                    <div class="div" ng-style="{'background' : 'url(' + coluna1[0].imagem + ') no-repeat' }" style="background-size:cover">
+                                        <div class="overlay"></div>
+                                        <div class="conteudo-bloco">
+
+                                            <h1 ng-bind-html="coluna1[0].title"></h1>
+
+                                        </div>
+                                        <div class="detalhe">
+                                            <div class="data" ng-bind="coluna1[0].dataPublicacao"></div>
+                                            <div ng-bind-html="coluna1[0].breveDescricao + ' ...'"></div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="colunas-home coluna-2" ng-hide="hasColuna2"></div>
+                            <div class="colunas-home coluna-2" ng-show="hasColuna2">
+                                <a ng-click="abrirUrl(coluna2[0].url, coluna2[0].fonte)">
+                                    <div class="div" ng-style="{'background' : 'url(' + coluna2[0].imagem + ') no-repeat' }" style="background-size:cover">
+                                        <div class="overlay"></div>
+                                        <div class="conteudo-bloco">
+                                            <h1 ng-bind-html="coluna2[0].title"></h1>
+                                        </div>
+                                        <div class="detalhe">
+                                            <div class="data" ng-bind="coluna2[0].dataPublicacao"></div>
+                                            <div ng-bind-html="(coluna2[0].breveDescricao | limitTo:100) + '...' "></div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="colunas-home coluna-3" ng-hide="hasColuna3"></div>
+                            <div class="colunas-home coluna-3" ng-show="hasColuna3">
+                                <div class="div" ng-style="{'background' : 'url(' + coluna3[0].imagem + ') no-repeat' }" style="background-size:cover">
+                                    <a ng-click="abrirUrl(coluna3[0].url, coluna3[0].fonte)">
+                                        <div class="overlay"></div>
+                                        <div class="conteudo-bloco">
+                                            <h1 ng-bind-html="coluna3[0].title"></h1>
+                                        </div>
+                                        <div class="detalhe">
+                                            <div class="data" ng-bind="coluna3[0].dataPublicacao"></div>
+                                            <div ng-bind-html="(coluna3[0].breveDescricao | limitTo:100)  + ' ...'"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="cleafix"></div>
+                            <ul class="colunas-home-linha2">
+                                <li class="colunas-home coluna-4" ng-hide="hasColuna4"></li>
+                                <li class="colunas-home coluna-4" ng-show="hasColuna4">
+                                    <div class="div" ng-style="{'background' : 'url(' + coluna4[0].imagem + ') no-repeat' }" style="background-size:cover">
+                                        <a ng-click="abrirUrl(coluna4[0].url, coluna4[0].fonte)">
+                                            <div class="overlay"></div>
+                                            <div class="conteudo-bloco">
+                                                <h1 ng-bind-html="coluna4[0].title"></h1>
+                                            </div>
+                                            <div class="detalhe">
+                                                <div class="data" ng-bind="coluna4[0].dataPublicacao"></div>
+                                                <div ng-bind-html="(coluna4[0].breveDescricao | limitTo:100)  + ' ...'"></div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="colunas-home coluna-5" ng-hide="hasColuna5"></li>
+                                <li class="colunas-home coluna-5" ng-show="hasColuna5">
+                                    <div class="div" ng-style="{'background' : 'url(' + coluna5[0].imagem + ') no-repeat' }" style="background-size:cover">
+                                        <a ng-click="abrirUrl(coluna5[0].url, coluna5[0].fonte)">
+                                            <div class="overlay"></div>
+                                            <div class="conteudo-bloco">
+                                                <h1 ng-bind-html="coluna5[0].title"></h1>
+                                            </div>
+                                            <div class="detalhe">
+                                                <div class="data" ng-bind="coluna5[0].dataPublicacao"></div>
+                                                <div ng-bind-html="(coluna5[0].breveDescricao | limitTo:100)  + ' ...'"></div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="colunas-home coluna-6" ng-hide="hasColuna6"></li>
+                                <li id="coluna6" class="colunas-home coluna-6" ng-show="hasColuna6">
+                                    <div class="div" ng-style="{'background' : 'url(' + coluna6[0].imagem + ') no-repeat' }" style="background-size:cover">
+                                        <a ng-click="abrirUrl(coluna6[0].url, coluna6[0].fonte)">
+                                            <div class="overlay"></div>
+                                            <div class="conteudo-bloco">
+                                                <h1 ng-bind-html="coluna6[0].title"></h1>
+                                            </div>
+                                            <div class="detalhe">
+                                                <div class="data" ng-bind="coluna6[0].dataPublicacao"></div>
+                                                <div ng-bind-html="(coluna6[0].breveDescricao | limitTo:100)  + ' ...'"></div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="cleafix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="colunas2" class="campos-de-interesse box-itens-escritorio banners-home" style="left: 75.2%;">
+                <div class="content">
+                    <div style="text-align:center" ng-show="loading"><img src="/app/themes/img/facebook.gif" style="position: relative;top: 10px;display:normal" /><br /><small>Carregando conteúdo...</small></div>
+                    <div ng-show="isLoaded">
+                        <div class="colunas-linha-1">
+                            <div class="colunas-home coluna-1" ng-hide="hasColuna1"></div>
+                            <div class="colunas-home coluna-1" ng-show="hasColuna1">
+                                <div class="div" ng-style="{'background' : 'url(' + coluna1[1].imagem + ') no-repeat' }" style="background-size:cover">
+                                    <a ng-click="abrirUrl(coluna1[1].url, coluna1[1].fonte)">
+                                        <div class="overlay"></div>
+                                        <div class="conteudo-bloco">
+                                            <h1 ng-bind-html="coluna1[1].title"></h1>
+                                        </div>
+                                        <div class="detalhe">
+                                            <div class="data" ng-bind="coluna1[1].dataPublicacao"></div>
+                                            <div ng-bind-html="coluna1[1].breveDescricao  + ' ...'"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="colunas-home coluna-2" ng-hide="hasColuna2"></div>
+                            <div class="colunas-home coluna-2" ng-show="hasColuna2">
+                                <div class="div" ng-style="{'background' : 'url(' + coluna2[1].imagem + ') no-repeat' }" style="background-size:cover">
+                                    <a ng-click="abrirUrl(coluna2[1].url, coluna2[1].fonte)">
+                                        <div class="overlay"></div>
+                                        <div class="conteudo-bloco">
+                                            <h1 ng-bind-html="coluna2[1].title"></h1>
+                                        </div>
+                                        <div class="detalhe">
+                                            <div class="data" ng-bind="coluna2[1].dataPublicacao"></div>
+                                            <div ng-bind-html="(coluna2[1].breveDescricao | limitTo:100)  + ' ...'"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="colunas-home coluna-3" ng-hide="hasColuna3"></div>
+                            <div class="colunas-home coluna-3" ng-show="hasColuna3">
+                                <div class="div" ng-style="{'background' : 'url(' + coluna3[1].imagem + ') no-repeat' }" style="background-size:cover">
+                                    <a ng-click="abrirUrl(coluna3[1].url, coluna3[1].fonte)">
+                                        <div class="overlay"></div>
+                                        <div class="conteudo-bloco">
+                                            <h1 ng-bind-html="coluna3[1].title"></h1>
+                                        </div>
+                                        <div class="detalhe">
+                                            <div class="data" ng-bind="coluna3[1].dataPublicacao"></div>
+                                            <div ng-bind-html="(coluna3[1].breveDescricao | limitTo:100)  + ' ...'"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="cleafix"></div>
+                            <ul class="colunas-home-linha2">
+                                <li class="colunas-home coluna-4" ng-hide="hasColuna4"></li>
+                                <li class="colunas-home coluna-4" ng-show="hasColuna4">
+                                    <div class="div" ng-style="{'background' : 'url(' + coluna4[1].imagem + ') no-repeat' }" style="background-size:cover">
+                                        <a ng-click="abrirUrl(coluna4[1].url, coluna4[1].fonte)">
+                                            <div class="overlay"></div>
+                                            <div class="conteudo-bloco">
+                                                <h1 ng-bind-html="coluna4[1].title"></h1>
+                                            </div>
+                                            <div class="detalhe">
+                                                <div class="data" ng-bind="coluna4[1].dataPublicacao"></div>
+                                                <div ng-bind-html="(coluna4[1].breveDescricao | limitTo:100)  + ' ...'"></div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="colunas-home coluna-5" ng-hide="hasColuna5"></li>
+                                <li class="colunas-home coluna-5" ng-show="hasColuna5">
+                                    <div class="div" ng-style="{'background' : 'url(' + coluna5[1].imagem + ') no-repeat' }" style="background-size:cover">
+                                        <a ng-click="abrirUrl(coluna5[1].url, coluna5[1].fonte)">
+                                            <div class="overlay"></div>
+                                            <div class="conteudo-bloco">
+                                                <h1 ng-bind-html="coluna5[1].title"></h1>
+                                            </div>
+                                            <div class="detalhe">
+                                                <div class="data" ng-bind="coluna5[1].dataPublicacao"></div>
+                                                <div ng-bind-html="(coluna5[1].breveDescricao | limitTo:100)  + ' ...'"></div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="colunas-home coluna-6" ng-hide="hasColuna6"></li>
+                                <li id="coluna6" class="colunas-home coluna-6" ng-show="hasColuna6">
+                                    <div class="div" ng-style="{'background' : 'url(' + coluna6[1].imagem + ') no-repeat' }" style="background-size:cover">
+                                        <a ng-click="abrirUrl(coluna6[1].url, coluna6[1].fonte)">
+                                            <div class="overlay"></div>
+                                            <div class="conteudo-bloco">
+                                                <h1 ng-bind-html="coluna6[1].title"></h1>
+                                            </div>
+                                            <div class="detalhe">
+                                                <div class="data" ng-bind="coluna6[1].dataPublicacao"></div>
+                                                <div ng-bind-html="(coluna6[1].breveDescricao | limitTo:100)  + ' ...'"></div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="cleafix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="colunas3" class="campos-de-interesse box-itens-escritorio banners-home" style="left: 150.6%;">
+                <div class="content">
+                    <div style="text-align:center" ng-show="loading"><img src="/app/themes/img/facebook.gif" style="position: relative;top: 10px;display:normal" /><br /><small>Carregando conteúdo...</small></div>
+                    <div ng-show="isLoaded">
+                        <div class="colunas-linha-1">
+                            <div class="colunas-home coluna-1" ng-hide="hasColuna1"></div>
+                            <div class="colunas-home coluna-1" ng-show="hasColuna1">
+                                <div class="div" ng-style="{'background' : 'url(' + coluna3[1].imagem + ') no-repeat' }" style="background-size:cover">
+                                    <a ng-click="abrirUrl(coluna1[2].url, coluna1[2].fonte)">
+                                        <div class="overlay"></div>
+                                        <div class="conteudo-bloco">
+                                            <h1 ng-bind-html="coluna1[2].title"></h1>
+                                        </div>
+                                        <div class="detalhe">
+                                            <div class="data" ng-bind="coluna1[2].dataPublicacao"></div>
+                                            <div ng-bind-html="coluna1[2].breveDescricao  + ' ...'"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="colunas-home coluna-2" ng-hide="hasColuna2"></div>
+                            <div class="colunas-home coluna-2" ng-show="hasColuna2">
+                                <div class="div" ng-style="{'background' : 'url(' + coluna2[2].imagem + ') no-repeat' }" style="background-size:cover">
+                                    <a ng-click="abrirUrl(coluna2[2].url, coluna2[2].fonte)">
+                                        <div class="overlay"></div>
+                                        <div class="conteudo-bloco">
+                                            <h1 ng-bind-html="coluna2[2].title"></h1>
+                                        </div>
+                                        <div class="detalhe">
+                                            <div class="data" ng-bind="coluna2[2].dataPublicacao"></div>
+                                            <div ng-bind-html="(coluna2[2].breveDescricao | limitTo:100)  + ' ...'"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="colunas-home coluna-3" ng-hide="hasColuna3"></div>
+                            <div class="colunas-home coluna-3" ng-show="hasColuna3">
+                                <div class="div" ng-style="{'background' : 'url(' + coluna3[2].imagem + ') no-repeat' }" style="background-size:cover">
+                                    <a ng-click="abrirUrl(coluna3[2].url, coluna3[2].fonte)">
+                                        <div class="overlay"></div>
+                                        <div class="conteudo-bloco">
+                                            <h1 ng-bind-html="coluna3[2].title"></h1>
+                                        </div>
+                                        <div class="detalhe">
+                                            <div class="data" ng-bind="coluna3[2].dataPublicacao"></div>
+                                            <div ng-bind-html="(coluna3[2].breveDescricao | limitTo:100)  + ' ...'"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="cleafix"></div>
+                            <ul class="colunas-home-linha2">
+                                <li class="colunas-home coluna-4" ng-hide="hasColuna4"></li>
+                                <li class="colunas-home coluna-4" ng-show="hasColuna4">
+                                    <div class="div" ng-style="{'background' : 'url(' + coluna4[2].imagem + ') no-repeat' }" style="background-size:cover">
+                                        <a ng-click="abrirUrl(coluna4[2].url, coluna4[2].fonte)">
+                                            <div class="overlay"></div>
+                                            <div class="conteudo-bloco">
+                                                <h1 ng-bind-html="coluna4[2].title"></h1>
+                                            </div>
+                                            <div class="detalhe">
+                                                <div class="data" ng-bind="coluna4[2].dataPublicacao"></div>
+                                                <div ng-bind-html="(coluna4[2].breveDescricao | limitTo:100)  + ' ...'"></div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="colunas-home coluna-5" ng-hide="hasColuna5"></li>
+                                <li class="colunas-home coluna-5" ng-show="hasColuna5">
+                                    <div class="div" ng-style="{'background' : 'url(' + coluna5[2].imagem + ') no-repeat' }" style="background-size:cover">
+                                        <a ng-click="abrirUrl(coluna5[2].url, coluna5[2].fonte)">
+                                            <div class="overlay"></div>
+                                            <div class="conteudo-bloco">
+                                                <h1 ng-bind-html="coluna5[2].title"></h1>
+                                            </div>
+                                            <div class="detalhe">
+                                                <div class="data" ng-bind="coluna5[2].dataPublicacao"></div>
+                                                <div ng-bind-html="(coluna5[2].breveDescricao | limitTo:100)  + ' ...'"></div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="colunas-home coluna-6" ng-hide="hasColuna6"></li>
+                                <li id="coluna6" class="colunas-home coluna-6" ng-show="hasColuna6">
+                                    <div class="div" ng-style="{'background' : 'url(' + coluna6[2].imagem + ') no-repeat' }" style="background-size:cover">
+                                        <a ng-click="abrirUrl(coluna6[2].url, coluna6[2].fonte)">
+                                            <div class="overlay"></div>
+                                            <div class="conteudo-bloco">
+                                                <h1 ng-bind-html="coluna6[2].title"></h1>
+                                            </div>
+                                            <div class="detalhe">
+                                                <div class="data" ng-bind="coluna6[2].dataPublicacao"></div>
+                                                <div ng-bind-html="(coluna6[2].breveDescricao | limitTo:100)  + ' ...'"></div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="cleafix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a id="banners-prev" href="javascript:void(0)" onclick="MudarPagina(1)" style="display:none"><img src="/app/img-site/prev.png" /></a>&nbsp;
+            <a id="banners-next" href="javascript:void(0)" onclick="MudarPagina(2)"><img src="/app/img-site/next.png" /></a>&nbsp;
+        </div>
+    </section>
+
+    <div class="banners-caption" ng-show="isLoaded">
+        <a href="javascript:void(0)" onclick="MudarPagina(1)"></a>&nbsp;
+        <a href="javascript:void(0)" onclick="MudarPagina(2)"></a>&nbsp;
+        <a href="javascript:void(0)" onclick="MudarPagina(3)"></a>&nbsp;
+    </div>
+</div>
+
+
+<script>
+
+    if ($(window).width() > 800) {
+        RecarregarScripts();
+    }
+
+    var larguraTela = $(window).width();
+
+
+    if (larguraTela >= 1320)
+    {
+        $("#wrapper-banners").attr('style', 'height:650px;overflow:hidden');
+        $(".banners-caption").attr('style', 'width:600px;margin:10px auto;width:1420px');
+        $("section#banners").attr('style', 'height: 650px;overflow: visible;width: 1420px;margin: 0 auto;')
+
+        $("#colunas1").attr('style', 'left:0%');
+        $("#colunas2").attr('style', 'left:71.2%');
+        $("#colunas3").attr('style', 'left:150.6%');
+    }
+    else
+    {
+        $("#colunas1").addClass('banners-home-active');
+        $("#colunas2").removeClass('banners-home-active');
+        $("#colunas3").removeClass('banners-home-active');
+
+        $("#colunas1").attr('style', 'left:0%!important');
+        $("#colunas2").attr('style', 'left:100%!important');
+        $("#colunas3").attr('style', 'left:200%!important');
+    }
+
+    function MudarPagina(pagina) {
+
+        var leftColuna1 = "0";
+        var leftColuna2 = "0";
+        var leftColuna3 = "0";
+
+        var segundaColuna = 0;
+        var colunaDestaque = 0;
+        var primeiraColuna = 0;
+        var terceiraColuna = 0;
+        var primeiraColuna = 0;
+
+        if (larguraTela >= 1280 && larguraTela <= 1300)
+        {
+            leftColuna2 = "79.2%";
+            leftColuna3 = "150.6%";
+        }
+        else if (larguraTela >= 1030 )
+        {
+            leftColuna2 = 71.2;
+            leftColuna3 = "150.6%";
+
+
+            primeiraColuna = -71.2;
+            colunaDestaque = 0;
+            segundaColuna = 71.2;
+            terceiraColuna = 150.4;
+        }
+        else
+        {
+            primeiraColuna = -100;
+            colunaDestaque = 0;
+            segundaColuna = 100;
+            terceiraColuna = 200;
+        }
+
+
+        if (larguraTela >= 1030) {
+
+            if (pagina == 1) {
+                $("#colunas1").addClass('banners-home-active');
+                $("#colunas2").removeClass('banners-home-active');
+                $("#colunas3").removeClass('banners-home-active');
+
+                //$("#colunas1").attr('style', 'left:0%');
+                //$("#colunas2").attr('style', 'left:75.2%');
+                //$("#colunas3").attr('style', 'left:150.6%');
+
+                $("#colunas1").attr('style', 'left:' + colunaDestaque + '%');
+                $("#colunas2").attr('style', 'left:' + segundaColuna + '%');
+                $("#colunas3").attr('style', 'left:' + terceiraColuna + '%');
+
+                $("#banners-prev").attr('onclick', 'MudarPagina(1)');
+                $("#banners-prev").attr('style', 'display:none');
+                $("#banners-next").attr('onclick', 'MudarPagina(2)');
+            }
+            else if (pagina == 2) {
+                $("#colunas1").removeClass('banners-home-active');
+                $("#colunas3").removeClass('banners-home-active');
+                $("#colunas2").addClass('banners-home-active');
+
+                $("#colunas1").attr('style', 'left:' + primeiraColuna + '%');
+                $("#colunas2").attr('style', 'left:' + colunaDestaque + '%');
+                $("#colunas3").attr('style', 'left:' + segundaColuna + '%');
+
+                $("#banners-prev").attr('onclick', 'MudarPagina(1)');
+                $("#banners-prev").removeAttr('style');
+                $("#banners-next").removeAttr('style');
+                $("#banners-next").attr('onclick', 'MudarPagina(3)');
+            }
+            else if (pagina == 3) {
+                $("#colunas1").removeClass('banners-home-active');
+                $("#colunas2").removeClass('banners-home-active');
+                $("#colunas3").addClass('banners-home-active');
+
+                //$("#colunas1").attr('style', 'left:-150.6%');
+                //$("#colunas2").attr('style', 'left:-83%');
+                //$("#colunas3").attr('style', 'left:0%');
+
+                $("#colunas1").attr('style', 'left:' + 0 - terceiraColuna + '%');
+                $("#colunas2").attr('style', 'left:' + primeiraColuna + '%');
+                $("#colunas3").attr('style', 'left:' + colunaDestaque + '%');
+
+                $("#banners-prev").attr('onclick', 'MudarPagina(2)');
+                $("#banners-next").attr('onclick', 'MudarPagina(1)');
+                $("#banners-next").attr('style', 'display:none');
+            }
+        }
+        else {
+
+            if (pagina == 1) {
+                $("#colunas1").addClass('banners-home-active');
+                $("#colunas2").removeClass('banners-home-active');
+                $("#colunas3").removeClass('banners-home-active');
+
+                $("#colunas1").attr('style', 'left:0%!important');
+                $("#colunas2").attr('style', 'left:100%!important');
+                $("#colunas3").attr('style', 'left:200%!important');
+
+                $("#banners-prev").attr('onclick', 'MudarPagina(1)');
+                $("#banners-prev").attr('style', 'display:none');
+                $("#banners-next").attr('onclick', 'MudarPagina(2)');
+            }
+            else if (pagina == 2) {
+                $("#colunas1").removeClass('banners-home-active');
+                $("#colunas3").removeClass('banners-home-active');
+                $("#colunas2").addClass('banners-home-active');
+
+                $("#colunas1").attr('style', 'left:-100%!important');
+                $("#colunas2").attr('style', 'left:0%!important');
+                $("#colunas3").attr('style', 'left:100%!important');
+
+                $("#banners-prev").attr('onclick', 'MudarPagina(1)');
+                $("#banners-prev").removeAttr('style');
+                $("#banners-next").removeAttr('style');
+                $("#banners-next").attr('onclick', 'MudarPagina(3)');
+            }
+            else if (pagina == 3) {
+                $("#colunas1").removeClass('banners-home-active');
+                $("#colunas2").removeClass('banners-home-active');
+                $("#colunas3").addClass('banners-home-active');
+
+                $("#colunas1").attr('style', 'left:-200%!important');
+                $("#colunas2").attr('style', 'left:-100%!important');
+                $("#colunas3").attr('style', 'left:0%!important');
+
+                $("#banners-prev").attr('onclick', 'MudarPagina(2)');
+                $("#banners-next").attr('onclick', 'MudarPagina(1)');
+                $("#banners-next").attr('style', 'display:none');
+            }
+        }
+
+
+        if ($(window).width() > 800) {
+            RecarregarScripts();
+        }
+    }
+
+    function alterarOverlayOver(div) {
+        $(".banners-home-active ." + div + " .overlay").css('height', $(".banners-home-active ." + div + " .div").css('height'));
+        $(".banners-home-active ." + div + " .overlay").css('width', $(".banners-home-active ." + div + " .div").css('width'));
+    }
+
+    function RecarregarScripts() {
+
+        $(".banners-home-active .coluna-1").mouseover(function () {
+
+            $(".banners-home-active .coluna-1").css('z-index', '2');
+            $(".banners-home-active .coluna-2").css('z-index', '1');
+            $(".banners-home-active .coluna-3").css('z-index', '1');
+            $(".banners-home-active .coluna-4").css('z-index', '1');
+            $(".banners-home-active .coluna-5").css('z-index', '1');
+            $(".banners-home-active .coluna-6").css('z-index', '1');
+
+            var atual = $(".banners-home-active .coluna-1 .div").css('background');
+
+            aumentar(1, '455px', '742px');
+
+            $(".banners-home-active .coluna-1 .detalhe").css('display', 'block');
+            $(".banners-home-active .coluna-1 .div").attr('class', 'div faded');
+
+            alterarOverlayOver('coluna-1');
+        });
+
+        $(".banners-home-active .coluna-1").mouseout(function () {
+            var atual = $(".banners-home-active .coluna-1 .div").css('background');
+
+            diminuir(1, '385px', '672px');
+
+            $(".banners-home-active .coluna-1 .detalhe").css('display', 'none');
+            $(".banners-home-active .coluna-1 .div").attr('class', 'div');
+            $(".banners-home-active .coluna-1 .overlay").removeAttr('style');
+
+            alterarOverlayOver('coluna-1');
+        });
+
+        $(".banners-home-active .coluna-2").mouseover(function () {
+
+            $(".banners-home-active .coluna-1").css('z-index', '1');
+            $(".banners-home-active .coluna-2").css('z-index', '2');
+            $(".banners-home-active .coluna-3").css('z-index', '1');
+            $(".banners-home-active .coluna-4").css('z-index', '1');
+            $(".banners-home-active .coluna-5").css('z-index', '1');
+            $(".banners-home-active .coluna-6").css('z-index', '1');
+
+            aumentar(2, '260px', '403.2px');
+
+            $(".banners-home-active .coluna-2 .detalhe").css('display', 'block');
+            $(".banners-home-active .coluna-2 .div").attr('class', 'div faded');
+
+            alterarOverlayOver('coluna-2');
+        });
+
+        function aumentar(coluna, altura, largura)
+        {
+            $(".banners-home-active .coluna-" + coluna + " .div").css('height', altura);
+            $(".banners-home-active .coluna-" + coluna + " .div").css('width', largura);
+            $(".banners-home-active .coluna-" + coluna + " .div").css('position', 'absolute');
+            $(".banners-home-active .coluna-" + coluna + " .div").css('z-index', '20');
+            $(".banners-home-active .coluna-" + coluna + " .div").css('display', 'block');
+            $(".banners-home-active .coluna-" + coluna + " .div").css('margin-left', '-40px');
+            $(".banners-home-active .coluna-" + coluna + " .div").css('margin-top', '-40px');
+        }
+
+        function diminuir(coluna, altura, largura)
+        {
+            $(".banners-home-active .coluna-" + coluna + " .div").css('height', altura);
+            $(".banners-home-active .coluna-" + coluna + " .div").css('width', largura);
+            $(".banners-home-active .coluna-" + coluna + " .div").css('position', 'inherit');
+            $(".banners-home-active .coluna-" + coluna + " .div").css('z-index', 'inherit');
+            $(".banners-home-active .coluna-" + coluna + " .div").css('display', 'block');
+            $(".banners-home-active .coluna-" + coluna + " .div").css('margin-left', 'inherit');
+            $(".banners-home-active .coluna-" + coluna + " .div").css('margin-top', 'inherit');
+        }
+
+        $(".banners-home-active .coluna-2").mouseout(function () {
+            var atual = $(".banners-home-active .coluna-2 .div").css('background');
+
+            diminuir(2, '190px', '333.2px');
+
+            $(".banners-home-active .coluna-2 .detalhe").css('display', 'none');
+            $(".banners-home-active .coluna-2 .div").attr('class', 'div');
+
+            alterarOverlayOver('coluna-2');
+        });
+
+        $(".banners-home-active .coluna-3").mouseover(function () {
+
+            $(".banners-home-active .coluna-1").css('z-index', '1');
+            $(".banners-home-active .coluna-2").css('z-index', '1');
+            $(".banners-home-active .coluna-3").css('z-index', '2');
+            $(".banners-home-active .coluna-4").css('z-index', '1');
+            $(".banners-home-active .coluna-5").css('z-index', '1');
+            $(".banners-home-active .coluna-6").css('z-index', '1');
+
+            aumentar(3, '260px', '403.2px');
+
+            var atual = $(".banners-home-active .coluna-3 .div").css('background');
+            //$(".banners-home-active .coluna-3 .div").attr('style', 'background:' + atual + ';background-size:cover;position: absolute;height: 260px;z-index: 20;display: block;margin: 0px;width: 403.2px;margin-left:-40px;margin-top:-40px;');
+            $(".banners-home-active .coluna-3 .detalhe").css('display', 'block');
+            $(".banners-home-active .coluna-3 .div").attr('class', 'div faded');
+            alterarOverlayOver('coluna-3');
+        });
+
+        $(".banners-home-active .coluna-3").mouseout(function () {
+            var atual = $(".banners-home-active .coluna-3 .div").css('background');
+
+            diminuir(3, '190px', '333.2px');
+
+            //$(".banners-home-active .coluna-3 .div").attr('style', 'background:' + atual + ';background-size:cover;');
+            $(".banners-home-active .coluna-3 .detalhe").css('display', 'none');
+            $(".banners-home-active .coluna-3 .div").attr('class', 'div');
+
+            alterarOverlayOver('coluna-3');
+        });
+
+        $(".banners-home-active .coluna-4").mouseover(function () {
+
+            $(".banners-home-active .coluna-1").css('z-index', '1');
+            $(".banners-home-active .coluna-2").css('z-index', '1');
+            $(".banners-home-active .coluna-3").css('z-index', '1');
+            $(".banners-home-active .coluna-4").css('z-index', '2');
+            $(".banners-home-active .coluna-5").css('z-index', '1');
+            $(".banners-home-active .coluna-6").css('z-index', '1');
+
+            aumentar(4, '260px', '403.2px');
+
+            $(".banners-home-active .coluna-4 .detalhe").css('display', 'block');
+            $(".banners-home-active .coluna-4 .div").attr('class', 'div faded');
+
+            alterarOverlayOver('coluna-4');
+        });
+
+        $(".banners-home-active .coluna-4").mouseout(function () {
+
+            diminuir(4, '190px', '333.2px');
+
+            $(".banners-home-active .coluna-4 .detalhe").css('display', 'none');
+            $(".banners-home-active .coluna-4 .div").attr('class', 'div');
+
+            alterarOverlayOver('coluna-4');
+        });
+
+        $(".banners-home-active .coluna-5").mouseover(function () {
+
+            $(".banners-home-active .coluna-1").css('z-index', '1');
+            $(".banners-home-active .coluna-2").css('z-index', '1');
+            $(".banners-home-active .coluna-3").css('z-index', '1');
+            $(".banners-home-active .coluna-4").css('z-index', '1');
+            $(".banners-home-active .coluna-5").css('z-index', '2');
+            $(".banners-home-active .coluna-6").css('z-index', '1');
+
+            aumentar(5, '260px', '403.2px');
+
+            $(".banners-home-active .coluna-5 .detalhe").css('display', 'block');
+            $(".banners-home-active .coluna-5 .div").attr('class', 'div faded');
+            alterarOverlayOver('coluna-5');
+        });
+
+        $(".banners-home-active .coluna-5").mouseout(function () {
+
+            diminuir(5, '190px', '333.2px');
+
+            $(".banners-home-active .coluna-5 .detalhe").css('display', 'none');
+            $(".banners-home-active .coluna-5 .div").attr('class', 'div');
+
+            alterarOverlayOver('coluna-5');
+        });
+
+        $(".banners-home-active .coluna-6").mouseover(function () {
+
+            $(".banners-home-active .coluna-1").css('z-index', '1');
+            $(".banners-home-active .coluna-2").css('z-index', '1');
+            $(".banners-home-active .coluna-3").css('z-index', '1');
+            $(".banners-home-active .coluna-4").css('z-index', '1');
+            $(".banners-home-active .coluna-5").css('z-index', '1');
+            $(".banners-home-active .coluna-6").css('z-index', '2');
+
+            aumentar(6, '260px', '403.2px');
+
+            $(".banners-home-active .coluna-6 .detalhe").css('display', 'block');
+            $(".banners-home-active .coluna-6 .div").attr('class', 'div faded');
+            alterarOverlayOver('coluna-6');
+        });
+
+        $(".banners-home-active .coluna-6").mouseout(function () {
+
+            diminuir(6, '190px', '333.2px');
+
+            $(".banners-home-active .coluna-6 .detalhe").css('display', 'none');
+            $(".banners-home-active .coluna-6 .div").attr('class', 'div');
+
+            alterarOverlayOver('coluna-6');
+        });
+    }
+</script>
+
+<section id="perfis">
+    <div class="content">
+        <div class="col-md-11" style="text-align: center; margin: 0 auto; float: none;">
+            <ul class="list-inline">
+                <li><a href="/#/segmentos/entidades-de-classe"><img src="/app/img-site/entidades_classe_selected.svg" /><p>entidades de classe</p></a></li>
+                <li><a href="/#/segmentos/candidatos-a-cargo-publico"><img src="/app/img-site/candidato_cargo_publico_selected.svg" /><p>concursos públicos</p></a></li>
+                <li><a href="/#/segmentos/servidores-ativos"><img src="/app/img-site/servidores_ativa_selected.svg" /><p>servidores ativos</p></a></li>
+                <li><a href="/#/segmentos/servidores-inativos"><img src="/app/img-site/aposentadoria_selected.svg" /><p>servidores aposentados</p></a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+<section id="camposInteresse" ng-controller="CamposdeInteresseCtrl">
+    <div class="content">
+        <nav>
+            <ul class="list-inline" style="text-align: center; margin: 0 auto; display: inline-block;">
+                <li ng-repeat="resultado in lista">
+                    <a href="/#/camposdeinteresse/{{resultado.url}}">
+                        <img ng-src="{{resultado.iconeBranco}}" /><p>{{resultado.title}}</p>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</section>
+<section id="portfolio">
+    <div class="content">
+        <h3>o que você deseja?</h3>
+        <ul class="list-inline">
+            <li><a href="http://portfolio.servidor.adv.br/#!/pessoas/" target="_blank"><p>conhecer ações<br />individuais</p><i class="glyphicon glyphicon-triangle-top" style="font-size: 25px; color: #9b3d4a !important;"></i></a></li>
+            <li><a href="http://portfolio.servidor.adv.br/#!/assuntos/" target="_blank"><p>conhecer ações<br />coletivas</p><i class="glyphicon glyphicon-triangle-top" style="font-size: 25px; color: #9b3d4a !important;"></i></a></li>
+            <li><a href="http://portfolio.servidor.adv.br/#!/entidades/" target="_blank"><p>entender as ações da<br />minha entidade</p><i class="glyphicon glyphicon-triangle-top" style="font-size: 25px; color: #9b3d4a !important;"></i></a></li>
+            <li><a href="/#/contato"><p>reunir-me com um<br />advogado</p><i class="glyphicon glyphicon-triangle-top" style="font-size: 25px; color: #9b3d4a !important;"></i></a></li>
+        </ul>
+    </div>
+</section>
+<section id="advogados">
+    <div class="content">
+        <h3>advogados</h3>
+        <ul class="list-inline bxslider">
+            <li><div class="imgAdv" style="background-image:url('/app/img/gr/advogado1.jpg')"><a ng-href="/#/advogados/#CASSEL"><div class="overlay-adv"><span class="perfil">Ver Perfil</span></div></a></div><a ng-href="/#/advogados/#CASSEL">RUDI CASSEL</a></li>
+            <li><div class="imgAdv" style="background-image:url('/app/img/gr/advogado2.jpg')"><a ng-href="/#/advogados/#RUZZARIN"><div class="overlay-adv"><span class="perfil">Ver Perfil</span></div></a></div><a ng-href="/#/advogados/#RUZZARIN">JEAN P. RUZZARIN</a></li>
+            <li><div class="imgAdv" style="background-image:url('/app/img/gr/advogado3.jpg')"><a ng-href="/#/advogados/#SANTOS"><div class="overlay-adv"><span class="perfil">Ver Perfil</span></div></a></div><a ng-href="/#/advogados/#SANTOS">MARCOS J. SANTOS</a></li>
+            <li><div class="imgAdv" style="background-image:url('/app/img/gr/advogado4.jpg')"><a ng-href="/#/advogados/#RODRIGUES"><div class="overlay-adv"><span class="perfil">Ver Perfil</span></div></a></div><a ng-href="/#/advogados/#RODRIGUES">ARACÉLI RODRIGUES</a></li>
+            <li><div class="imgAdv" style="background-image:url('/app/img/gr/advogado16.jpg')"><a ng-href="/#/advogados/#KRATZ"><div class="overlay-adv"><span class="perfil">Ver Perfil</span></div></a></div><a ng-href="/#/advogados/#KRATZ">FERNANDA COELHO</a></li>
+            <li><div class="imgAdv" style="background-image:url('/app/img/gr/advogado7.jpg')"><a ng-href="/#/advogados/#HILARIO"><div class="overlay-adv"><span class="perfil">Ver Perfil</span></div></a></div><a ng-href="/#/advogados/#HILARIO">DANIEL HILÁRIO</a></li>
+            <li><div class="imgAdv" style="background-image:url('/app/img/gr/advogado8.jpg')"><a ng-href="/#/advogados/#ROVEDA"><div class="overlay-adv"><span class="perfil">Ver Perfil</span></div></a></div><a ng-href="/#/advogados/#ROVEDA">DANIELA ROVEDA</a></li>
+            <li><div class="imgAdv" style="background-image:url('/app/img/gr/advogado9.jpg')"><a ng-href="/#/advogados/#PREDIGER"><div class="overlay-adv"><span class="perfil">Ver Perfil</span></div></a></div><a ng-href="/#/advogados/#PREDIGER">KARIN PREDIGER</a></li>
+            <li><div class="imgAdv" style="background-image:url('/app/img/gr/advogado11.jpg')"><a ng-href="/#/advogados/#FERNANDES"><div class="overlay-adv"><span class="perfil">Ver Perfil</span></div></a></div><a ng-href="/#/advogados/#FERNANDES">PEDRO RODRIGUES</a></li>
+            <li><div class="imgAdv" style="background-image:url('/app/img/gr/advogado12.jpg')"><a ng-href="/#/advogados/#BARBOSA"><div class="overlay-adv"><span class="perfil">Ver Perfil</span></div></a></div><a ng-href="/#/advogados/#BARBOSA">ROBSON BARBOSA</a></li>
+            <li><div class="imgAdv" style="background-image:url('/app/img/gr/advogado14.jpg')"><a ng-href="/#/advogados/#MAGALHAES"><div class="overlay-adv"><span class="perfil">Ver Perfil</span></div></a></div><a ng-href="/#/advogados/#MAGALHAES">CAMILA MAGALHÃES</a></li>
+            <li><div class="imgAdv" style="background-image:url('/app/img/gr/advogado15.jpg')"><a ng-href="/#/advogados/#BUENO"><div class="overlay-adv"><span class="perfil">Ver Perfil</span></div></a></div><a ng-href="/#/advogados/#BUENO">IGOR BUENO</a></li>
+        </ul>
+    </div>
+</section>
+
+<!-- bxSlider Javascript file -->
+<script src="/app/themes/slider/jquery.bxslider.min.js"></script>
+<!-- bxSlider CSS file -->
+<link href="/app/themes/slider/jquery.bxslider.min.css" rel="stylesheet" />
+
+<script>
+    $(document).ready(function () {
+        $('.bxslider').bxSlider({
+            minSlides: 1,
+            maxSlides: 4,
+            slideWidth: 170,
+            slideMargin: 10,
+            auto: true,
+            autoHover: true,
+            responsive: true
+        });
+    });
+</script>
+
+
+
+<style>
+
+    .coluna-2 .div, .coluna-3 .div, .coluna-4 .div, .coluna-5 .div, .coluna-6 .div
+    {
+        background-size:cover!important;
+    }
+
+    #colunas3 {
+        top: -1220px;
+        left: 95px;
+    }
+
+    #portfolio {
+        background: #fbfbfa url('/app/img-site/bg-oquevocedeseja.png') repeat-y 50%;
+    }
+
+    .bx-wrapper {
+        max-width: 100% !important;
+        -moz-box-shadow: 0 0 0 white !important;
+        -webkit-box-shadow: 0 0 0 white !important;
+        box-shadow: 0 0 0 white !important;
+        border: 0px solid #fff;
+    }
+
+        .bx-wrapper .bx-prev, .bx-wrapper .bx-prev:hover {
+            background: url('/app/img-site/advPrev.png') no-repeat 0 0;
+        }
+
+        .bx-wrapper .bx-next, .bx-wrapper .bx-next:hover {
+            background: url('/app/img-site/advNext.png') no-repeat 0 0;
+        }
+
+    .bx-pager {
+        display: none;
+    }
+
+    .bx-wrapper .bx-controls-direction a {
+        width: 30px;
+        height: 50px;
+        margin-top: -40px !important;
+    }
+
+    .bx-viewport {
+        width: 90% !important;
+        margin: 0 auto;
+        height: 320px !important;
+    }
+
+    .colunas-home {
+        width: 100%;
+        text-align: left;
+        background-size: cover !important;
+    }
+
+    .data {
+        font-size: 11px;
+        color: white;
+        font-style: italic;
+    }
+
+    .overlay {
+        background-image: -webkit-gradient(linear,left top,left bottom,color-stop(20%,rgba(0, 0, 0, 0.3)),to(#000));
+        background-image: -moz-gradient(linear,left top,left bottom,color-stop(20%,rgba(0, 0, 0, 0.3)),to(#000));
+        background-image: linear-gradient(to bottom,rgba(0, 0, 0, 0.3) 20%,#000);
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+    .coluna-1 .overlay {
+        width: 100%;
+        height: 100%;
+    }
+
+    .colunas-1 .detalhe {
+        padding-top: 50px;
+    }
+
+    .colunas-home .detalhe {
+        color: #ccc;
+        padding-top: 20px;
+        line-height: 25px;
+        text-align: left;
+        position: relative;
+        z-index: 999999;
+    }
+
+    .coluna-home .div {
+    }
+
+    .colunas-home:hover {
+    }
+
+        .colunas-home:hover .conteudo-bloco {
+            padding-top: 10px;
+        }
+
+    .coluna-1 {
+        width: 672px;
+        height: 385px;
+        background-color: #333;
+        margin-right: 5px;
+        margin-bottom: 5px;
+        float: left;
+    }
+
+        .coluna-1:hover .conteudo-bloco {
+            padding-top: 50px;
+        }
+
+        .coluna-1 .div {
+            width: 672px;
+            height: 385px;
+            padding: 20px;
+            z-index: 40;
+            position: relative;
+        }
+
+    .faded {
+        -webkit-box-shadow: 0px 2px 10px 0px rgba(50, 50, 50, 0.75);
+        -moz-box-shadow: 0px 2px 10px 0px rgba(50, 50, 50, 0.75);
+        box-shadow: 0px 2px 10px 0px rgba(50, 50, 50, 0.75);
+    }
+
+    .conteudo-bloco {
+        padding-top: 50px;
+    }
+
+    .coluna-1 .conteudo-bloco {
+        padding-top: 150px;
+    }
+
+    .detalhe {
+        display: none;
+    }
+
+    .coluna-1, .coluna-2, .coluna-3, .coluna-4, .coluna-5, .coluna-6 {
+        position: relative;
+    }
+
+    .coluna-2, .coluna-3 {
+        width: 333.2px;
+        height: 190px;
+        margin-bottom: 5px;
+        float: left;
+    }
+
+        .coluna-2 .div, .coluna-3 .div {
+            width: 333.2px;
+            height: 190px;
+            padding: 20px;
+            position: relative;
+        }
+
+
+    .colunas-home .fonte {
+        color: white;
+        font-family: 'Lato', 'serif';
+        font-size: 12px;
+        position: relative;
+        line-height: 30px;
+        position: relative;
+        top: 10px;
+    }
+
+    .colunas-home h1 {
+        color: white;
+        font-family: 'Lato', 'serif';
+        font-size: 18px;
+        position: relative;
+        line-height: 130%;
+    }
+
+    .coluna-1 h1 {
+        font-size: 40px;
+        line-height: 100%;
+    }
+
+    .coluna-1, .coluna-2, .coluna-3, .coluna-4, .coluna-5, .coluna-6 {
+        background-color: #fafafa !important;
+    }
+
+    .coluna-4, .coluna-5, .coluna-6 {
+        width: 333.2px !important;
+        height: 190px;
+        padding: 0px !important;
+    }
+
+        .coluna-4 .div, .coluna-5 .div, .coluna-6 .div {
+            width: 333.2px;
+            height: 190px;
+            padding: 20px;
+            position: relative;
+        }
+
+    .coluna-4 {
+        margin-right: 2.5px !important;
+    }
+
+    .coluna-5 {
+        margin-left: 2.5px !important;
+        margin-right: 2.5px !important;
+    }
+
+    .coluna-6 {
+        margin-left: 2.5px !important;
+    }
+
+    .colunas-home-linha2 {
+        list-style-type: none;
+    }
+
+        .colunas-home-linha2 li {
+            float: left;
+        }
+
+    @media screen and (max-width: 1024px) {
+        #banners .content {
+            width: 100%;
+            padding: 0px;
+        }
+
+        section#perfis .content {
+            width: 100%;
+        }
+
+            section#perfis .content .col-md-11 {
+                width: 100%;
+            }
+
+        .coluna-1 .overlay {
+            margin-left: 0px;
+            margin-top: 0px;
+        }
+
+        #colunas2 {
+            margin-top: 20px;
+        }
+
+        #colunas3 {
+            margin-top: -1200px;
+            top:0px;
+        }
+    }
+
+    @media screen and (max-width:900px)
+    {
+        section#banners
+        {
+            height:1000px!important;
+        }
+
+        .coluna-2, .coluna-4
+        {
+            margin-right:11px!important;
+        }
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 900px) {
+        .bannersMain {
+            width: 100% !important;
+        }
+
+        section#banners .content {
+            width: 100%;
+            padding: 0px;
+        }
+
+        .coluna-1, .coluna-1 .div, .overlay {
+            width: 100% !important;
+            margin: 0 auto;
+            margin-bottom: 5px;
+            overflow: hidden;
+        }
+
+        .coluna-2 .div, .coluna-3 .div {
+            width: 50%;
+            height: 190px;
+            padding: 20px;
+            float: left;
+        }
+
+        .coluna-2 .div, .coluna-3 .div, .coluna-4 .div, .coluna-5 .div, .coluna-6 .div {
+            width: 100% !important;
+            height: 190px;
+            padding: 20px;
+            float: left;
+        }
+
+        .coluna-2, .coluna-3, .coluna-4, .coluna-5, .coluna-6 {
+            width: 49% !important;
+            height: 190px;
+            margin-bottom: 5px;
+            float: left;
+        }
+
+        .coluna-5 {
+            margin: 0px !important;
+        }
+
+        section#banners {
+            height: 1010px !important;
+        }
+
+        .coluna-6 {
+            margin-left: 0px !important;
+            margin-top: 5px !important;
+        }
+    }
+
+    @media screen and (max-width: 768px) and (min-width: 481px) {
+        #colunas2 {
+            margin-top: -390px;
+            left:100%!important;
+        }
+
+        #colunas3 {
+            margin-top: -1610px;
+            top:0px;
+        }
+
+        .coluna-2, .coluna-4
+        {
+            margin-right: 5px;
+            margin-left: 2px;
+        }
+
+        .coluna-4, .coluna-5 {
+            float: left !important;
+            margin-bottom: 5px !important;
+        }
+
+        section#camposInteresse li
+        {
+            width:220px;
+        }
+
+        section#camposInteresse nav
+        {
+            margin-top:0px;
+        }
+
+        #banners-next, #banners-prev
+        {
+            display:none;
+        }
+
+        section#perfis li
+        {
+            width:50%;
+            float:left;
+        }
+
+        section#perfis
+        {
+            padding:30px 0;
+        }
+
+        .coluna-2, .coluna-3, .coluna-4, .coluna-5, .coluna-6 {
+            width: 49.1% !important;
+            margin-bottom: 5px !important;
+            float: left !important;
+        }
+
+        #banners
+        {
+            height:1050px!important;
+        }
+
+        .coluna-2 h1, .coluna-3 h1, .coluna-4 h1, .coluna-5 h1, .coluna-6 h1
+        {
+            font-size:12px!important;
+        }
+
+        .conteudo-bloco
+        {
+            padding-top:40px;
+        }
+
+        .coluna-1 h1
+        {
+            font-size:28px;
+            line-height:30px;
+        }
+
+    }
+
+    @media screen and (max-width: 480px) {
+
+        .coluna-1 h1
+        {
+            font-size:28px;
+            line-height:30px;
+        }
+
+        .coluna-2 .div, .coluna-3 .div, .coluna-4 .div, .coluna-5 .div, .coluna-6 .div
+        {
+            padding:5px;
+        }
+
+        .conteudo-bloco
+        {
+            padding-top:40px;
+        }
+
+        .coluna-2, .coluna-4, .coluna-3, .coluna-5
+        {
+            margin-left: 0px!important;
+            margin-right: 0px!important;
+        }
+
+        .coluna-3, .coluna-5
+        {
+            margin-left: 4px!important;
+        }
+
+        .coluna-2 h1, .coluna-3 h1, .coluna-4 h1, .coluna-5 h1, .coluna-6 h1
+        {
+            font-size:12px!important;
+        }
+
+        .coluna-2, .coluna-3, .coluna-4, .coluna-5, .coluna-6 {
+            width: 49.1% !important;
+            height: 190px;
+            margin-bottom: 5px !important;
+            float: left !important;
+        }
+
+        #colunas2 {
+            margin-top: -390px !important;
+            left:100%!important;
+        }
+
+        #colunas3 {
+            margin-top: -1610px;
+            top:0px;
+        }
+
+        .coluna-6
+        {
+            width: 100%!important;
+            margin: 0 10px;
+            float: none!important;
+        }
+
+        .coluna-6 .conteudo-bloco
+        {
+            padding-top:40px
+        }
+    }
+
+    @media screen and (max-width: 980px) and (min-width: 901px) {
+    .coluna-4, .coluna-5, .coluna-6
+    {
+        width: 323.3px !important;
+    }
+
+    .coluna-4 .div, .coluna-5 .div, .coluna-6 .div
+    {
+        width: 320px;
+    }
+
+    .coluna-2, .coluna-3
+    {
+        width:303px;
+    }
+
+    #colunas3
+    {
+        top:0px;
+    }
+}
+
+    @media screen and (max-width: 768px)
+    {
+        #banners-next, #banners-prev
+        {
+            display:none;
+        }
+    }
+</style>
+
+<script type="text/javascript">
+    //New Slider jQuery Start
+    $(document).ready(function () {
+
+        $(".destaque-advogados").carousel({
+            pagination: false,
+            loop: true,
+            autoSlide: true,
+            dispItems: 1,
+            responsive: true
+        });
+
+        //$(".slider").carousel({
+        //    pagination: false,
+        //    loop: true,
+        //    autoSlide: true,
+        //    autoSlideInterval: 5000,
+        //    dispItems: 1,
+        //    nextBtn: '<input type="button" value="&gt;" />',
+        //    prevBtn: '<input type="button" value="&lt;" />',
+        //    prevBtnInsert: 'insertBefore',
+        //    nextBtnInsert: 'insertBefore'
+        //});
+
+        //$("#owl-demo").owlCarousel({
+
+        //    navigation: true, // Show next and prev buttons
+        //    slideSpeed: 300,
+        //    paginationSpeed: 400,
+        //    singleItem: true,
+        //    navigationText: ["&lt;", "&gt"],
+        //    items: 1,
+        //    responsive: true
+
+
+
+
+
+        //Mobile Nav Menu Start
+        jQuery('.m-menu').click(function () {
+            jQuery('header nav ul').slideToggle();
+        });
+        //Mobile Nav Menu End
+    });
+
+
+</script>

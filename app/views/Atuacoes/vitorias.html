@@ -1,0 +1,98 @@
+<div class="content">
+    <div class="row">
+        <div class="col-md-12 col-xs-12 pagina-bgbranco divResultado">
+            <div class="text-left loading" ng-show="loading"><img src="/app/themes/img/facebook.gif" style="position: relative;top: 10px;margin-right: 10px;" /></div>
+            <ul>
+                <li class="informes" ng-repeat="item in lista">
+                    <h1 class="title"><a href="{{'/#/atuacoes/' + item.url}}">{{item.title}}</a></h1>
+                    <img src="/app/img-site/icon-calendar.png" /> <span class="date" ng-bind="item.dataPublicacao | date:'dd/MM/yyyy'"></span>&nbsp;|&nbsp;<span class="icone-interesse" ng-repeat="campo in item.camposdeInteresse"><a href="/#/informes/interesse/{{campo.id}}" ng-style="{'background-color':campo.cor}" style="padding:5px 10px;color:white;font-weight:bold;font-size:11px;border-radius:1px;"><img ng-src="{{campo.iconeBranco}}" class="interesses-iconebranco" />&nbsp;{{campo.title}}</a>&nbsp;</span>
+                    <br />
+                    <p class="breveDescricao" ng-bind-html="item.breveDescricao"></p>
+                    <a href="/#/atuacoes/{{item.url}}" class="botao-leiamais">Leia mais</a>
+                </li>
+            </ul>
+        </div>
+        <!--<div class="col-md-4 col-xs-12 paddingLeft0 divBuscaAvancada">
+            <br /><br />
+            <div class="searchform" style="text-align: center;">
+                <button class="busca busca-avancada" onclick="javascript:mostraresconderBusca()">BUSCA AVANÇADA</button>
+                <button class="search btnBusca btn-avancada" id="btnsearch" onclick="javascript:mostraresconderBusca()">
+                    <img src="app/themes/img/search.png">
+                </button>
+            </div>
+        </div>
+        <div class="col-md-4 col-xs-12 paddingLeft0">
+            <div id="sidebars" style="display:none">
+                <h4>Conteúdos Relacionados</h4>
+                <div class="text-align alert alert-warning" ng-show="nenhumConteudoRelacionado">
+                    Nenhum conteúdo relacionado encontrado.
+                </div>
+                <div class="text-align loading" ng-show="loadingRelacionados"><img src="/app/themes/img/facebook.gif" style="position: relative;top: 10px;margin-right: 10px;" /></div>
+                <ul class="conteudo-relacionado">
+                    <li ng-repeat="rel in itensRelacionados">
+                        <h1 class="title"><a href="{{ rel.url }}">{{rel.titulo}}</a></h1>
+                        <p ng-bind="item.breveDescricao | limitTo:100"></p>
+                    </li>
+                </ul>
+            </div>
+        </div>-->
+    </div>
+</div>
+<script>
+
+
+    function mostraresconderBusca() {
+        if ($("#buscaavancada").css('display') == 'block')
+            $("#buscaavancada").css('display', 'none');
+        else
+            $("#buscaavancada").css('display', 'block');
+    }
+
+
+
+    $("#btnsearch").click(function () {
+        Buscar();
+    });
+
+    $("#drpCampodeInteresse").change(function () {
+        Buscar();
+    });
+
+    $("input.busca").keypress(function (e) {
+        if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
+            Buscar();
+        }
+    });
+
+    function Buscar() {
+        var palavrachave = encodeURIComponent($("#searchblog").val());
+        window.location = "/#/informes/busca/vitorias/" + $("#drpCampodeInteresse").val() + "/" + palavrachave;
+    }
+
+</script>
+
+<style>
+    .busca-avancada {
+        background-color: #444 !important;
+        opacity: 0.9;
+        color: #eee !important;
+        width: 100%;
+        border-radius: 4px;
+        float: left;
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+        font-size: 14px;
+        padding: 17px 10px !important;
+        font-family: 'Open Sans', sans-serif;
+        outline: none;
+        border: none !important;
+        -webkit-box-shadow: none !important;
+        -moz-box-shadow: none !important;
+        box-shadow: none !important;
+        height: 50px;
+    }
+
+    .btn-avancada {
+        height: 50px;
+    }
+</style>

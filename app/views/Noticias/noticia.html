@@ -1,0 +1,160 @@
+﻿<!-- 
+<section id="cabecalho-paginas" class="informes-cabecalho">
+    <input type="hidden" id="assuntos" value="{{item.assuntos}}" />
+    <div class="box-itens-escritorio">
+        <h2>INFORMES</h2>
+        <ul class="list-inline">
+            <li>
+                <a href="/#/informes/tipo/noticias">
+                    <img src="/app/img-site/icone-noticias.png" />
+                    <div>NOTÍCIAS</div>
+                </a>
+            </li>
+            <li>
+                <a href="/#/informes/tipo/atuacoes">
+                    <img src="/app/img-site/icone-atuacoes.png" />
+                    <div>ATUAÇÕES</div>
+                </a>
+            </li>
+            <li>
+                <a href="/#/informes/tipo/namidia">
+                    <img src="/app/img-site/icone-namidia.png" />
+                    <div>NA MÍDIA</div>
+                </a>
+            </li>
+        </ul>
+    </div>
+</section> -->
+<section id="buscaavancada" style="display:none">
+    <div class="content">
+        <div class="row">
+            <div class="col-md-4 col-xs-12 form-group">
+                <label>Por tipo de conteúdo</label>
+                <select id="drpTipoConteudo" class="form-control">
+                    <option value="todos">Todos</option>
+                    <option value="noticias">Notícias</option>
+                    <option value="namidia">Na Mídia</option>
+                    <option value="atuacoes">Atuações</option>
+                    <option value="vitorias">Vitórias</option>
+                </select>
+            </div>
+            <div class="col-md-4 col-xs-12 form-group">
+                <label>Por assunto</label>
+                <div class="searchform">
+                    <input type="text" class="busca searching" value="Pesquisar..." name="s" id="searchblog" onblur="if (this.value == '') {this.value = 'Pesquisar...';}" onfocus="if (this.value == 'Pesquisar...') {this.value = '';}">
+                    <button class="search btnBusca" id="btnsearch"><img src="app/themes/img/search.png"></button>
+                </div>
+            </div>
+            <div class="col-md-4 col-xs-12 form-group" ng-controller="CamposdeInteresseCtrl">
+                <label>Por campo de interesse</label>
+                <select id="drpCampodeInteresse" class="form-control">
+                    <option value="0">Selecione...</option>
+                    <option ng-repeat="campo in lista" value="{{campo.id}}">{{campo.title}}</option>
+                </select>
+            </div>
+
+        </div>
+    </div>
+</section>
+<div class="content">
+    <div class="row">
+        <div class="col-md-8 col-xs-12 pagina-bgbranco">
+            <div class="text-align loading" ng-show="loading"><img src="/app/themes/img/facebook.gif" style="position: relative;top: 10px;margin-right: 10px;" /></div>
+            <div class="informes" ng-show="conteudocarregado">
+                <h1 class="title"><a href="{{'/#/noticias/' + item.url}}">{{item.title}}</a></h1>
+
+                <img src="/app/img-site/icon-calendar.png" /> <span class="date" ng-bind="item.dataPublicacao | date:'dd/MM/yyyy'"></span>&nbsp;|
+                &nbsp;<span class="icone-interesse" ng-repeat="campo in item.camposdeInteresse"><a href="/#/informes/interesse/{{campo.id}}" style="background-color:{{campo.cor}};padding:5px 10px;color:white;font-weight:bold;font-size:11px;border-radius:1px;"><img ng-src="{{campo.iconeBranco}}" class="interesses-iconebranco" />&nbsp;{{campo.title}}</a>&nbsp;|&nbsp;</span>
+                <a href="/#/informes/tipo/noticias" class="informe-tipo">Notícias</a>
+                <br /><br />
+                <p ng-bind-html="item.corpo"></p>
+            </div>
+        </div>
+        <div class="col-md-3 col-xs-12 paddingLeft0 col-md-offset-1 sidebar">
+            <br /><br />
+            <div id="sidebars">
+                <h4>Conteúdos Relacionados</h4>
+                <div class="text-align alert alert-warning" ng-show="nenhumConteudoRelacionado">
+                    Nenhum conteúdo relacionado encontrado.
+                </div>
+                <div class="text-align loading" ng-show="loadingRelacionados"><img src="/app/themes/img/facebook.gif" style="position: relative;top: 10px;margin-right: 10px;" /></div>
+                <ul class="list-unstyled">
+                    <li class="cat-item hr" ng-repeat="rel in itensRelacionados">
+                        <i class="glyphicon glyphicon-chevron-right"></i>&nbsp;
+                        <a href="{{ rel.url }}">{{rel.titulo}}</a>
+                        <p class="brevedescJulgados"><span ng-bind-html="rel.breveDescricao | limitTo:80"></span>...</p>
+                    </li>
+                </ul>
+            </div>
+            <br />
+            <div class="text-center">
+                <input id="cf_submit" class="enviar" onclick="QueroSaberMais()" type="submit" value="Quer saber mais? Clique aqui.">
+                <input type="hidden" name="identificador" id="id_Item" value="{{item.url}}">
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .brevedescJulgados {
+        font-size: 12px;
+        color: #8B8386;
+    }
+
+    li.hr {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border: 0;
+        border-bottom: 1px solid #eee;
+    }
+
+    input.enviar {
+        background-color: #891828;
+        width: 100%;
+        color: #ffffff;
+        border: none;
+        cursor: pointer;
+        margin: 0 auto;
+        font-size: 16px;
+        border-radius: 5px;
+        padding: 12px 30px 12px 30px;
+    }
+
+    .sidebar {
+        padding-top:0;
+    }
+</style>
+<script>
+
+    function QueroSaberMais() {
+        window.location = "/#/contato/ref/" + $("#id_Item").val();
+    }
+
+    function mostraresconderBusca() {
+        if ($("#buscaavancada").css('display') == 'block')
+            $("#buscaavancada").css('display', 'none');
+        else
+            $("#buscaavancada").css('display', 'block');
+    }
+
+    $("#btnsearch").click(function () {
+        Buscar();
+    });
+
+    $("#drpCampodeInteresse").change(function () {
+        Buscar();
+    });
+
+    $("input.busca").keypress(function (e) {
+        if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
+            Buscar();
+        }
+    });
+
+    function Buscar() {
+        var palavrachave = encodeURIComponent($("#searchblog").val());
+        window.location = "/#/informes/busca/" + $("#drpTipoConteudo").val().toLowerCase() + "/" + $("#drpCampodeInteresse").val() + "/" + palavrachave;
+    }
+
+
+</script>

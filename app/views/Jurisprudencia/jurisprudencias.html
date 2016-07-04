@@ -1,0 +1,175 @@
+﻿<section id="cabecalho-paginas">
+    <div class="box-itens-escritorio">
+        <h2>JURISPRUDÊNCIA</h2>
+    </div>
+</section>
+<div id="buscaavancada" style="display: none">
+    <div class="content">
+        <div class="row col-md-8" style="float:none;margin:0 auto;">
+            <div class="col-md-6 col-xs-12 form-group">
+                <label>Por palavra chave</label>
+                <div class="searchform">
+                    <input type="text" class="busca searching" value="Pesquisar..." name="s" id="searchblog" onblur="if (this.value == '') {this.value = 'Pesquisar...';}" onfocus="if (this.value == 'Pesquisar...') {this.value = '';}">
+                    <button class="search btnBusca" id="btnsearch"><img src="app/themes/img/search.png"></button>
+                </div>
+            </div>
+            <div class="col-md-6 col-xs-12 form-group" ng-controller="CamposdeInteresseCtrl">
+                <label>Por campo de interesse</label>
+                <select id="drpCampodeInteresse" class="form-control">
+                    <option value="0">Selecione...</option>
+                    <option ng-repeat="campo in lista" value="{{campo.id}}">{{campo.title}}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="content">
+    <div class="row">
+        <div class="col-md-8 col-xs-12 pagina-bgbranco divResultado">
+            <div class="col-md-12" ng-show="isBuscaFeita">
+                <span style="font-style:italic">Resultados encontrados para "<label>{{buscafeita}}</label>"</span>
+            </div>
+            <div class="row">
+                <div class="col-md-12" ng-hide="hasInformation">
+                    <div class="alert alert-warning">Ops, não encontramos nenhuma informação com os critérios de busca que você solicitou, por favor tente novamente.</div>
+                </div>
+            </div>
+            <div class="text-align loading" ng-show="loading">
+                <img src="/app/themes/img/facebook.gif" style="position: relative; top: 10px; margin-right: 10px;" />
+            </div>
+            <ul>
+                <li class="informes" ng-repeat="n in lista">
+                    <h1 class="title"><a href="{{'/#/jurisprudencia/' + n.url + '/' + n.id}}">{{n.title}}</a></h1>
+                    <img src="/app/img-site/icon-calendar.png" />
+                    <span class="date" ng-bind="n.modified | date:'dd/MM/yyyy'"></span>&nbsp;|&nbsp;<span class="icone-interesse" ng-repeat="campo in n.camposdeInteresse"><a href="/#/informes/interesse/{{campo.id}}" ng-style="{'background-color' : campo.cor}" style="padding: 5px 10px; color: white; font-weight: bold; font-size: 11px; border-radius: 1px;"><img ng-src="{{campo.iconeBranco}}" class="interesses-iconebranco" />&nbsp;{{campo.title}}</a>&nbsp;</span>
+                    <div class="breveDescricao">
+                        <p ng-bind-html="n.breveDescricao + '...'"></p>
+                    </div>
+                    <br />
+                    <a href="{{'/#/jurisprudencia/' + n.url + '/' + n.id}}" class="botao-leiamais">Leia mais</a>
+                </li>
+            </ul>
+            <nav class="paginacaoHome" style="text-align:left;margin:0;margin-top:20px" ng-show="pagination">
+                <ul class="paginacao">
+                    <li ng-show="previousview">
+                        <a onclick="goBack()" aria-label="Previous" style="float:none">
+                            <span aria-hidden="true">{{namePrevious}}</span>
+                        </a>
+                    </li>
+                    <li ng-show="nextview">
+                        <a ng-href="{{nextpage}}" aria-label="Next" style="float:none">
+                            <span aria-hidden="true">{{nameNext}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="col-md-3 col-md-offset-1 col-xs-12 divBuscaAvancada">
+            <!--<div class="searchform" style="text-align: center;">
+                <button class="busca busca-avancada" onclick="javascript:mostraresconderBusca()">BUSCA AVANÇADA</button>
+                <button class="search btnBusca btn-avancada" id="btnsearch" onclick="javascript:mostraresconderBusca()">
+                    <img src="app/themes/img/search.png">
+                </button>
+            </div>-->
+        </div>
+        <div class="col-md-3 col-md-offset-1 sidebar col-xs-12">
+            <div id="sidebars">
+                <div ng-controller="JulgadosComentadosCtrl" style="margin-top: 10px">
+                    <div ng-show="conteudoCarregado">
+                        <h3>Julgados Comentados</h3>
+                        <div class="text-align loading" ng-show="loading">
+                            <img src="/app/themes/img/facebook.gif" style="position: relative; top: 10px; margin-right: 10px; margin-bottom: 10px;" />
+                        </div>
+                        <ul class="list-unstyled">
+                            <li class="cat-item hr" ng-repeat="resultado in lista | limitTo: 5">
+                                <i class="glyphicon glyphicon-chevron-right"></i>&nbsp;
+                                <a href="{{resultado.url}}">
+                                    {{resultado.title}}
+                                </a>
+                                <p class="brevedescJulgados"><span ng-bind-html="resultado.breveDescricao | limitTo: 80"></span>...</p>
+                            </li>
+                            <li class="cat-item">
+                                <i class="glyphicon glyphicon-chevron-right"></i>&nbsp;
+                                <a href="/#/julgadoscomentados">Ver Todos</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .brevedescJulgados {
+        font-size: 12px;
+        color: #8B8386;
+    }
+
+    li.hr {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border: 0;
+        border-bottom: 1px solid #eee;
+    }
+
+    .busca-avancada {
+        background-color: #444 !important;
+        opacity: 0.9;
+        color: #eee !important;
+        width: 100%;
+        border-radius: 4px;
+        float: left;
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+        font-size: 14px;
+        padding: 17px 10px !important;
+        font-family: 'Open Sans', sans-serif;
+        outline: none;
+        border: none !important;
+        -webkit-box-shadow: none !important;
+        -moz-box-shadow: none !important;
+        box-shadow: none !important;
+        height: 50px;
+    }
+
+    .btn-avancada {
+        height: 50px;
+    }
+</style>
+
+<script>
+
+    function goBack() {
+        window.history.back()
+    }
+
+    function mostraresconderBusca() {
+        if ($("#buscaavancada").css('display') == 'block')
+            $("#buscaavancada").css('display', 'none');
+        else
+            $("#buscaavancada").css('display', 'block');
+    }
+
+    $("input.busca").keypress(function (e) {
+        if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
+            Buscar();
+        }
+    });
+
+    function Buscar() {
+        var palavrachave = encodeURIComponent($("#searchblog").val());
+        window.location = "/#/jurisprudencia/busca/" + palavrachave + "/" + $("#drpCampodeInteresse").val();
+    }
+
+    $("#btnsearch").click(function () {
+        Buscar();
+        //window.location = "/#/jurisprudencias/q/" + $("#searchblog").val();
+    });
+
+    $("#drpCampodeInteresse").change(function () {
+        Buscar();
+        //window.location = "/#/jurisprudencias/interesse/" + $("#drpCampodeInteresse").val();
+    });
+
+</script>

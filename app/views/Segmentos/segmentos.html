@@ -1,0 +1,98 @@
+﻿
+<section id="cabecalho-paginas">
+    <div class="box-itens-escritorio">
+        <h2>Para quem atuamos</h2>
+    </div>
+</section>
+<div class="content">
+    <article>
+        <div class="box-itens-escritorio box-itens-segmentos">
+            <section id="tipos_clientes" class="tipos_clientes_3">
+                
+                <ul class="segmentos_menu tipos_clientes_3_menu">
+                    <li ng-class="entidadesClasseMenuCSS" class="active">
+                        <a href="/site#/segmentos/entidades-de-classe">
+                            <img src="http://servidor.adv.br/img/ui/entidades_classe.svg" class="image_off">
+                            <img src="http://servidor.adv.br/img/ui/entidades_classe_selected.svg" class="image_on">
+                        </a>
+                    </li>
+                    <li ng-class="candidatosCargoPublicoMenuCSS">
+                        <a href="/site#/segmentos/candidatos-a-cargo-publico">
+                            <img src="http://servidor.adv.br/img/ui/candidato_cargo_publico.svg" class="image_off">
+                            <img src="http://servidor.adv.br/img/ui/candidato_cargo_publico_selected.svg" class="image_on">
+                        </a>
+                    </li>
+                    <li ng-class="servidoresAtivosMenuCSS">
+                        <a href="/site#/segmentos/servidores-ativos">
+                            <img src="http://servidor.adv.br/img/ui/servidores_ativa.svg" class="image_off">
+                            <img src="http://servidor.adv.br/img/ui/servidores_ativa_selected.svg" class="image_on">
+                        </a>
+                    </li>
+                    <li ng-class="servidoresInativosMenuCSS">
+                        <a href="/site#/segmentos/servidores-inativos">
+                            <img src="http://servidor.adv.br/img/ui/aposentadoria.svg" class="image_off">
+                            <img src="http://servidor.adv.br/img/ui/aposentadoria_selected.svg" class="image_on">
+                        </a>
+                    </li>
+                </ul>
+                <div class="tipos_clientes_3_texto" align="left">
+                    <h2 class="titleSegmento"><span class="ng-binding">{{ item.titulo }}</span></h2>
+                    <div ng-bind-html="item.conteudo" class="ng-binding"></div>
+
+                    <div cg-busy="segmentoFindPromise" style="position: relative;">
+                        <div class="cg-busy cg-busy-animation ng-hide ng-scope" ng-show="loading">
+                            <img src="/app/themes/img/facebook.gif" style="position: absolute; top: 0px; left: 0px; right: 0px; bottom: 0px;">
+                        </div><div class="cg-busy cg-busy-animation ng-hide ng-scope" ng-show="loading">
+                            <img src="/app/themes/img/facebook.gif" style="position: absolute; top: 0px; left: 0px; right: 0px; bottom: 0px;">
+                        </div>
+                    </div>
+
+                </div>
+                <div style="clear:both"></div>
+            </section>
+        </div>
+
+    </article>
+</div>
+<section id="camposInteresse" class="camposInteresse-branco" ng-controller="CamposdeInteresseCtrl">
+    <div class="content">
+        <nav style="margin-top: 0;">
+            <ul class="list-inline" style="text-align: center; margin: 0 auto; float: none;">
+                <li ng-repeat="resultado in lista">
+                    <a href="/#/camposdeinteresse/{{resultado.url}}">
+                        <img src="{{resultado.imagem}}" /><p>{{resultado.title}}</p>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</section>
+
+<script type="text/javascript">
+
+    verificaCampoAtual();
+    $('html, body').animate({ scrollTop: $("#header").offset().top }, 2000);
+
+    function verificaCampoAtual() {
+        var url = window.location.href.split('/')[6];
+        $(".segmentos_menu li").attr('class', '');
+
+        $(".segmentos_menu li").each(function () {
+            var urlLink = $(this).find("a").attr('href').split('/')[3];
+
+            if (url == urlLink)
+                $(this).attr('class', 'active');
+        });
+
+    }
+
+</script>
+<style>
+    .titleSegmento  {
+        text-align: left!important;
+        margin-bottom: 1.6rem!important;
+        line-height: 35px!important;
+        margin-top: 0!important;
+        font-size: 35px!important;
+    }
+</style>
