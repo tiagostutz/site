@@ -21,19 +21,16 @@
 
     $scope.abrirUrl = function (url, fonte) {
         if (fonte == 'Blog Direito dos Concursos') {
-          if (url.indexOf('www.servidor.adv.br') != -1) {
-            url = url.replace('www.direitodosconcursos.com.br','direitodosconcursos.servidor.adv.br');
-          }
+          url = url.replace('www.direitodosconcursos.com.br','direitodosconcursos.servidor.adv.br');
           window.open(url);
 
         }else if (fonte == 'Blog Servidor Legal') {
-          if (url.indexOf('www.servidor.adv.br') != -1) {
-            url = url.replace('www.blogservidorlegal.com.br','servidorlegal.servidor.adv.br');
-          }
+          url = url.replace('www.blogservidorlegal.com.br','servidorlegal.servidor.adv.br');
           window.open(url);
 
-        else
-            window.location = url;
+        }else{
+          window.location = url;
+        }
     };
 
     var carregarConteudoRelacionado = function (assunto) {
