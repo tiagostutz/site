@@ -20,8 +20,18 @@
     $scope.hasColuna6 = false;
 
     $scope.abrirUrl = function (url, fonte) {
-        if (fonte == 'Blog Direito dos Concursos' || fonte == 'Blog Servidor Legal')
-            window.open(url);
+        if (fonte == 'Blog Direito dos Concursos') {
+          if (url.indexOf('www.servidor.adv.br') != -1) {
+            url = url.replace('www.direitodosconcursos.com.br','direitodosconcursos.servidor.adv.br');
+          }
+          window.open(url);
+
+        }else if (fonte == 'Blog Servidor Legal') {
+          if (url.indexOf('www.servidor.adv.br') != -1) {
+            url = url.replace('www.blogservidorlegal.com.br','servidorlegal.servidor.adv.br');
+          }
+          window.open(url);
+
         else
             window.location = url;
     };
