@@ -56,7 +56,6 @@
                 $scope.item = data.data.resultado;
 
                 $scope.item.corpo = $sce.trustAsHtml($scope.item.corpo);
-                console.log($scope.item.corpo);
 
                 $rootScope.tituloPaginaURL = $scope.item.title;
                 $rootScope.linkPaginaURL = $scope.item.url;
