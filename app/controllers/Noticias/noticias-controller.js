@@ -1,4 +1,4 @@
-angular.module("Servidor").controller('NoticiasCtrl', function ($scope, $route, $rootScope, noticiasAPI) {
+angular.module("Servidor").controller('NoticiasCtrl', function ($scope, $route, $rootScope, noticiasAPI, $sce) {
     
     $scope.loading = false;
     $scope.loadingRelacionados = false;
@@ -25,6 +25,8 @@ angular.module("Servidor").controller('NoticiasCtrl', function ($scope, $route, 
                 $scope.item = data.data.resultado;
                 $scope.loadingRelacionados = true;
                 $scope.conteudocarregado = true;
+
+                $scope.item.corpo = $sce.trustAsHtml($scope.item.corpo);
 
                 $rootScope.tituloPaginaURL = $scope.item.title;
                 $rootScope.linkPaginaURL = $scope.item.url;

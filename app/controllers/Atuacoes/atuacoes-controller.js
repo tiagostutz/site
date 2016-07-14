@@ -1,4 +1,4 @@
-﻿angular.module("Servidor").controller('AtuacoesCtrl', function ($scope, $route, $rootScope, atuacoesAPI) {
+﻿angular.module("Servidor").controller('AtuacoesCtrl', function ($scope, $route, $rootScope, atuacoesAPI, $sce) {
 
     $scope.loading = false;
     $scope.loadingRelacionados = false;
@@ -7,16 +7,20 @@
     $scope.lista = [];
     $scope.listaRelacionada = [];
     $scope.item;
+    $scope.origempage;
+    $scope.nameNext = "Próximo ›";
+    $scope.namePrevious = "‹ Anterior";
 
     $scope.validaUrl = function (url) {
         var parametros = url.split('/');
         var ultimo = parametros[parametros.length - 1];
-
-        console.log(ultimo);
     };
+
+    
 
     var carregarItens = function () {
         $scope.loading = true;
+
         atuacoesAPI.getItens(10).then(function (data) {
             if (data.statusText == "OK") {
                 $scope.lista = data.data.resultado;
@@ -59,10 +63,32 @@
 
     var carregarVitorias = function () {
         $scope.loading = true;
-        atuacoesAPI.getVitorias().then(function (data) {
+        var pagina = $route.current.params.page == undefined ? 0 : $route.current.params.page;
+
+        atuacoesAPI.getVitorias(pagina).then(function (data) {
+
+            $scope.nextpage = $scope.origempage + (parseInt(pagina) + 1);
+            $scope.pagination = true;
+
             if (data.statusText == "OK") {
                 $scope.lista = data.data.resultado;
                 $scope.loading = false;
+
+                if ($scope.lista.length == 0) {
+                    $scope.hasInformation = false;
+                    $scope.pagination = false;
+                }
+
+                if ($scope.lista.length < 10)
+                    $scope.nextview = false;
+                else
+                    $scope.nextview = true;
+
+
+                if (pagina > 0)
+                    $scope.previousview = true;
+                else
+                    $scope.previousview = false;
             }
         });
     };
@@ -72,6 +98,7 @@
         atuacoesAPI.getPorUrl(url).then(function (data) {
             if (data.statusText == "OK") {
                 $scope.item = data.data.resultado;
+                
                 $scope.conteudocarregado = true;
 
                 $rootScope.tituloPaginaURL = $scope.item.title;
@@ -103,7 +130,9 @@
         });
     };
 
-    if ($route.current.$$route.originalPath == "/vitorias")
+console.log($route.current.$$route.originalPath);
+
+    if ($route.current.$$route.originalPath.indexOf("/vitorias") > -1)
         carregarVitorias();
     else {
         if ($route.current.params.id != undefined)

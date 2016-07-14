@@ -37,6 +37,20 @@
             </div>
         </div>-->
     </div>
+    <nav class="paginacaoHome" style="text-align:left;margin:0;margin-top:20px" ng-show="pagination">
+        <ul class="paginacao">
+            <li ng-show="previousview">
+                <a onclick="goBack()" aria-label="Previous" style="float:none">
+                    <span aria-hidden="true">{{namePrevious}}</span>
+                </a>
+            </li>
+            <li ng-show="nextview">
+                <a ng-href="{{nextpage}}" aria-label="Next" style="float:none">
+                    <span aria-hidden="true">{{nameNext}}</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
 </div>
 <script>
 
@@ -48,7 +62,9 @@
             $("#buscaavancada").css('display', 'block');
     }
 
-
+    function goBack() {
+        window.history.back()
+    }
 
     $("#btnsearch").click(function () {
         Buscar();
