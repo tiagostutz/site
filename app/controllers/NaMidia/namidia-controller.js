@@ -1,4 +1,4 @@
-﻿angular.module("Servidor").controller('NaMidiaCtrl', function ($scope, $route, $rootScope, namidiaAPI) {
+﻿angular.module("Servidor").controller('NaMidiaCtrl', function ($scope, $route, $rootScope, namidiaAPI, $sce) {
 
     $scope.loading = false;
     $scope.loadingRelacionados = false;
@@ -54,6 +54,8 @@
         namidiaAPI.getPorUrl(url).then(function (data) {
             if (data.statusText == "OK") {
                 $scope.item = data.data.resultado;
+
+                $scope.item.corpo = $sce.trustAsHtml($scope.item.corpo);
 
                 $rootScope.tituloPaginaURL = $scope.item.title;
                 $rootScope.linkPaginaURL = $scope.item.url;

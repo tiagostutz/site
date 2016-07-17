@@ -134,6 +134,10 @@ app.config(['$httpProvider',function ($httpProvider) {
             templateUrl: 'app/views/Atuacoes/vitorias.html',
             controller: 'AtuacoesCtrl'
         })
+        .when('/vitorias/:page', {
+            templateUrl: 'app/views/Atuacoes/vitorias.html',
+            controller: 'AtuacoesCtrl'
+        })
         .when('/materiais', {
             templateUrl: 'app/views/Materiais/materiais.html',
             controller: 'MateriaisCtrl',

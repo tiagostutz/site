@@ -14,8 +14,8 @@
         return $http.get(config.baseUrl + "/Atuacoes/porurl?url=" + url);
     };
 
-    var _getVitorias = function () {
-        return $http.get(config.baseUrl + "/Atuacoes/vitorias");
+    var _getVitorias = function (pagina) {
+        return $http.get(config.baseUrl + "/Atuacoes/TodasVitorias?pagina=" + pagina);
     };
 
     var _getConteudoRelacionado = function (id, assunto, offset, page) {
