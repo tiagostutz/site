@@ -440,7 +440,7 @@ section#advogados {
         }
 
 .imgAdv {
-    background: url('http://servidor.adv.br/img/gr/adv-g15.jpg') top left no-repeat;
+    background: url('/img/gr/adv-g15.jpg') top left no-repeat;
     background-size: cover;
     background-clip: content-box;
     margin-bottom: 20px;
@@ -979,7 +979,7 @@ section#exclusividade {
     }
 
 section#escritorio {
-    background: url(http://servidor.adv.br/img/ui/sala_advogados_bsb_off.jpg) no-repeat top left;
+    background: url(/img/ui/sala_advogados_bsb_off.jpg) no-repeat top left;
     padding: 80px;
     position: relative;
     width: 100%;
