@@ -192,7 +192,7 @@ app.config(['$httpProvider',function ($httpProvider) {
             redirectTo: '/'
         });
 
-    $locationProvider.html5Mode(true);
+    // $locationProvider.html5Mode(true);
 });
 
 app.handleSuccess =
