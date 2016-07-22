@@ -61,9 +61,9 @@
             <div class="text-left loading" ng-show="loading"><img src="/app/themes/img/facebook.gif" style="position: relative;top: 10px;margin-right: 10px;" /></div>
             <ul ng-show="conteudocarregado">
                 <li class="informes">
-                    <h1 class="title"><a href="{{'/#/atuacoes/' + item.url}}">{{item.title}}</a></h1>
+                    <h1 class="title"><a href="{{'/#!/atuacoes/' + item.url}}">{{item.title}}</a></h1>
                     <img src="/app/img-site/icon-calendar.png" />
-                    <span class="date" ng-bind="item.dataPublicacao | date:'dd/MM/yyyy'"></span>&nbsp;|&nbsp;<span class="icone-interesse" ng-repeat="campo in item.camposdeInteresse"><a href="/#/informes/interesse/{{campo.id}}" style="background-color:{{campo.cor}};padding:5px 10px;color:white;font-weight:bold;font-size:11px;border-radius:1px;"><img ng-src="{{campo.iconeBranco}}" class="interesses-iconebranco" />&nbsp;{{campo.title}}</a>&nbsp;|&nbsp;</span><a href="/#/informes/tipo/atuacoes" class="informe-tipo">Atuações</a>
+                    <span class="date" ng-bind="item.dataPublicacao | date:'dd/MM/yyyy'"></span>&nbsp;|&nbsp;<span class="icone-interesse" ng-repeat="campo in item.camposdeInteresse"><a href="/#!/informes/interesse/{{campo.id}}" style="background-color:{{campo.cor}};padding:5px 10px;color:white;font-weight:bold;font-size:11px;border-radius:1px;"><img ng-src="{{campo.iconeBranco}}" class="interesses-iconebranco" />&nbsp;{{campo.title}}</a>&nbsp;|&nbsp;</span><a href="/#!/informes/tipo/atuacoes" class="informe-tipo">Atuações</a>
                     <br />
                     <p class="breveDescricao" ng-bind-html="item.corpo"></p>
                 </li>
@@ -126,7 +126,7 @@
 <script>
 
     function QueroSaberMais() {
-        window.location = "/#/contato/ref/" + $("#id_Item").val();
+        window.location = "/#!/contato/ref/" + $("#id_Item").val();
     }
 
     function mostraresconderBusca() {

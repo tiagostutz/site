@@ -1,4 +1,4 @@
-angular.module("Servidor").controller('NoticiasCtrl', function ($scope, $route, $rootScope, noticiasAPI, $sce) {
+angular.module("Servidor").controller('NoticiasCtrl', function ($scope, $route, $rootScope, noticiasAPI, $sce, config) {
     
     $scope.loading = false;
     $scope.loadingRelacionados = false;
@@ -28,8 +28,11 @@ angular.module("Servidor").controller('NoticiasCtrl', function ($scope, $route, 
 
                 $scope.item.corpo = $sce.trustAsHtml($scope.item.corpo);
 
-                $rootScope.tituloPaginaURL = $scope.item.title;
-                $rootScope.linkPaginaURL = $scope.item.url;
+                $rootScope.seo = {
+                    pageTitle: $scope.item.title,
+                    pageDescription: $scope.item.brevedescricao,
+                    pageURL: config.siteUrl + "#!/noticias/" + $scope.item.url
+                };
                 
                 if ($scope.item.assuntos.length > 0) {
                     $scope.loadingRelacionados = true;
@@ -78,6 +81,12 @@ angular.module("Servidor").controller('NoticiasCtrl', function ($scope, $route, 
 
                 $rootScope.tituloPaginaURL = $scope.item.title;
                 $rootScope.linkPaginaURL = $scope.item.url;
+
+                $rootScope.seo = {
+                    pageTitle: $scope.item.title,
+                    pageDescription: $scope.item.brevedescricao,
+                    pageURL: config.siteUrl + "#!/noticias/" + $scope.item.url
+                };
             }
         });
     };

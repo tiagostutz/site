@@ -10,7 +10,9 @@
     <script src="/app/bower_components/angular-update-meta/update-meta-min.js"></script>
     <script src="/app/bower_components/angular-busy/angular-busy.js"></script>
 
-    <title>Cassel Ruzzarin Santos Rodrigues - {{tituloPaginaURL}}</title>
+    <meta name="fragment" content="!">
+
+    <title>Cassel Ruzzarin Santos Rodrigues - {{seo.pageTitle}}</title>
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
@@ -19,11 +21,11 @@
     <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="title" content="Cassel Ruzzarin Santos Rodrigues - Advogados">
-    <meta name="description" content="">
+    <meta name="description" content="{{seo.pageDescription}}">
     <!-- Google will often use this as its description of your page/site. Make it good. -->
     <meta property="og:site_name" content="Cassel Ruzzarin Santos Rodrigues - Advogados" />
-    <meta property="og:title" content="{{tituloPaginaURL}}" />
-    <meta property="og:url" content="{{linkPaginaURL}}" />
+    <meta property="og:title" content="{{seo.pageTitle}}" />
+    <meta property="og:url" content="{{seo.pageURL}}" />
     <meta property="og:type" content="website" />
     <meta property="fb:admins" content="" />
     <!--<meta property="og:video" content="" />
@@ -33,7 +35,7 @@
 
     <!-- Dublin Core Metadata : http://dublincore.org/ -->
     <meta name="DC.title" content="Cassel Ruzzarin Santos Rodrigues - Advogados">
-    <meta name="DC.subject" content="{{tituloPaginaURL}}">
+    <meta name="DC.subject" content="{{seo.pageTitle}}">
     <meta name="DC.creator" content="Quicked - Soluções em Tecnologia">
     <!--  Mobile Viewport Fix -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
@@ -95,7 +97,7 @@
     <script>
         function reloadPage() {
             //location.reload();
-            window.location = "#/";
+            window.location = "/";
         }
 
         CarregarMenu();
@@ -145,21 +147,21 @@
                 </div>
                 <div class="collapse navbar-collapse" id="navTop">
                     <ul class="list-inline" id="navbar" style="position: relative;" ng-controller="MenuController">
-                        <li><a ng-class="menuClass('escritorio')" href="/#/escritorio">escritório</a></li>
-                        <li><a ng-class="menuClass('advogados')" href="/#/advogados">advogados</a></li>
-                        <li><a ng-class="menuClass('clientes')" href="/#/clientes">clientes</a></li>
-                        <li><a ng-class="menuClass('vitorias')" href="/#/vitorias">vitórias</a></li>
+                        <li><a ng-class="menuClass('escritorio')" href="/#!/escritorio">escritório</a></li>
+                        <li><a ng-class="menuClass('advogados')" href="/#!/advogados">advogados</a></li>
+                        <li><a ng-class="menuClass('clientes')" href="/#!/clientes">clientes</a></li>
+                        <li><a ng-class="menuClass('vitorias')" href="/#!/vitorias">vitórias</a></li>
                         <li class="dropdown">
                             <a href="#" ng-class="menuClass('informes;jurisprudencia;materiais;namidia;atuacoes;noticias')"  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">conteúdos</a>
                             <ul class="dropdown-menu">
-                                <li><a href="/#/informes/tipo/noticias">notícias</a></li>
-                                <li><a href="/#/informes/tipo/atuacoes">atuações</a></li>
-                                <li><a href="/#/informes/tipo/namidia">na mídia</a></li>
-                                <li><a href="/#/jurisprudencia">jurisprudência</a></li>
-                                <li><a href="/#/materiais">e-books e infográficos</a></li>
+                                <li><a href="/#!/informes/tipo/noticias">notícias</a></li>
+                                <li><a href="/#!/informes/tipo/atuacoes">atuações</a></li>
+                                <li><a href="/#!/informes/tipo/namidia">na mídia</a></li>
+                                <li><a href="/#!/jurisprudencia">jurisprudência</a></li>
+                                <li><a href="/#!/materiais">e-books e infográficos</a></li>
                             </ul>
                         </li>
-                        <li><a  ng-class="menuClass('contato')" id="link_contato" href="/#/contato/ref/{{tituloPaginaURL}}">contato</a></li>
+                        <li><a  ng-class="menuClass('contato')" id="link_contato" href="/#!/contato/ref/{{tituloPaginaURL}}">contato</a></li>
                     </ul>
                 </div>
             </nav>
@@ -189,7 +191,7 @@
                             </div>
                             <div class="cidades">
                                 <p style="font-weight: bold;">Brasília</p>
-                                <a href="/#/enderecos">veja o endereço</a>
+                                <a href="/#!/enderecos">veja o endereço</a>
                             </div>
                         </div>
 
@@ -199,7 +201,7 @@
                             </div>
                             <div class="cidades">
                                 <p style="font-weight: bold;">Belo Horizonte</p>
-                                <a href="/#/enderecos">veja o endereço</a>
+                                <a href="/#!/enderecos">veja o endereço</a>
                             </div>
                         </div>
 
@@ -209,7 +211,7 @@
                             </div>
                             <div class="cidades">
                                 <p style="font-weight: bold;">Rio de Janeiro</p>
-                                <a href="/#/enderecos">veja o endereço</a>
+                                <a href="/#!/enderecos">veja o endereço</a>
                             </div>
                         </div>
 
@@ -219,7 +221,7 @@
                             </div>
                             <div class="cidades">
                                 <p style="font-weight: bold;">Santa Maria</p>
-                                <a href="/#/enderecos">veja o endereço</a>
+                                <a href="/#!/enderecos">veja o endereço</a>
                             </div>
                         </div>
                     </div>

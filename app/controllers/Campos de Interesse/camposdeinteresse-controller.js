@@ -1,4 +1,4 @@
-angular.module("Servidor").controller('CamposdeInteresseCtrl', function ($scope, $route, $rootScope, camposdeinteresseAPI) {
+angular.module("Servidor").controller('CamposdeInteresseCtrl', function ($scope, $route, $rootScope, camposdeinteresseAPI, config) {
 
     $scope.loading = false;
     $scope.lista = [];
@@ -6,6 +6,9 @@ angular.module("Servidor").controller('CamposdeInteresseCtrl', function ($scope,
     $scope.exemplos = [];
     $scope.aspasdedestaque;
     $scope.tituloPaginaURL = "";
+
+
+
 
     var carregarCamposdeInteresse = function () {
         $scope.loading = true;
@@ -26,6 +29,13 @@ angular.module("Servidor").controller('CamposdeInteresseCtrl', function ($scope,
                 if (data.data.resultado != null)
                     $scope.exemplos = data.data.resultado.exemplos;
                 $scope.tituloPaginaURL = $route.current.params.urlcampo;
+                
+                $rootScope.seo = {
+                    pageTitle: $scope.item.title,
+                    pageDescription: $scope.item.descricao,
+                    pageURL: config.siteUrl + "#!/camposdeinteresse/" + $scope.item.url
+                };
+
                 $scope.loading = false;
             }
         });

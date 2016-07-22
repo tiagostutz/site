@@ -1,10 +1,13 @@
-var app = angular
-    .module('Servidor', ['ngRoute', 'ngSanitize']);
+var app = angular.module('Servidor', ['ngRoute', 'ngSanitize']);
 
-app.config(['$httpProvider',function ($httpProvider) {
+
+
+app.config(['$httpProvider',function ($httpProvider) 
+{
     $httpProvider.defaults.useXDomain = true;
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
-}]).config(function ($routeProvider, $locationProvider) {
+}])
+.config(function ($routeProvider, $locationProvider) {
 
     $routeProvider
         .when('/', {
@@ -192,7 +195,9 @@ app.config(['$httpProvider',function ($httpProvider) {
             redirectTo: '/'
         });
 
-    // $locationProvider.html5Mode(true);
+    $locationProvider.html5Mode();
+    $locationProvider.hashPrefix('!');
+    
 });
 
 app.handleSuccess =

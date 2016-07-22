@@ -1,4 +1,4 @@
-﻿angular.module("Servidor").controller('MateriaisCtrl', function ($scope, $route, $rootScope, materiaisAPI) {
+﻿angular.module("Servidor").controller('MateriaisCtrl', function ($scope, $route, $rootScope, materiaisAPI, config) {
 
     $scope.loading = false;
     $scope.lista = [];
@@ -6,6 +6,13 @@
     $scope.item;
     $rootScope.tituloPaginaURL = "Materiais";
     $rootScope.linkPaginaURL = "/#/materiais";
+
+    $rootScope.seo = {
+        pageTitle: 'Materiais',
+        pageDescription: '',
+        pageURL: config.siteUrl + "#!/materiais"
+    }
+
 
     var carregarLista = function () {
         $scope.loading = true;

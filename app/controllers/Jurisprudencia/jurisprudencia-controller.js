@@ -1,4 +1,4 @@
-﻿angular.module("Servidor").controller('JurisprudenciaCtrl', function ($scope, $route, $rootScope, jurisprudenciaAPI) {
+﻿angular.module("Servidor").controller('JurisprudenciaCtrl', function ($scope, $route, $rootScope, jurisprudenciaAPI,config) {
 
     $scope.loading = false;
     $scope.hasInformation = true;
@@ -20,7 +20,7 @@
         $scope.pagination = false;
         $scope.previouspage = "index.html#";
         $scope.nextpage = "index.html#";
-        $scope.origempage = "#/jurisprudencia/page/";
+        $scope.origempage = "#!/jurisprudencia/page/";
 
         var pagina = $route.current.params.page == undefined ? 0 : $route.current.params.page;
         jurisprudenciaAPI.getLista(10, pagina).then(function (data) {
@@ -39,6 +39,13 @@
                     $scope.item = $scope.lista[0];
                     $rootScope.tituloPaginaURL = $scope.item.title;
                     $rootScope.linkPaginaURL = $scope.item.url;
+
+                    $rootScope.seo = {
+                        pageTitle: $scope.item.title,
+                        pageDescription: $scope.item.brevedescricao,
+                        pageURL: config.siteUrl + "#!/jurisprudencia/" + $scope.item.url
+                    };
+
                 }
 
                 if ($scope.lista.length < 10)
@@ -87,6 +94,13 @@
                     $scope.item = $scope.lista[0];
                     $rootScope.tituloPaginaURL = $scope.item.title;
                     $rootScope.linkPaginaURL = $scope.item.url;
+
+                    $rootScope.seo = {
+                        pageTitle: $scope.item.title,
+                        pageDescription: $scope.item.brevedescricao,
+                        pageURL: config.siteUrl + "#!/jurisprudencia/" + $scope.item.url
+                    };
+
                 }
             }
         });
@@ -125,6 +139,13 @@
                     $scope.item = $scope.lista[0];
                     $rootScope.tituloPaginaURL = $scope.item.title;
                     $rootScope.linkPaginaURL = $scope.item.url;
+
+                    $rootScope.seo = {
+                        pageTitle: $scope.item.title,
+                        pageDescription: $scope.item.brevedescricao,
+                        pageURL: config.siteUrl + "#!/jurisprudencia/" + $scope.item.url
+                    };
+
                 }
             }
         });
@@ -154,6 +175,12 @@
 
                 $rootScope.tituloPaginaURL = $scope.item.title;
                 $rootScope.linkPaginaURL = $scope.item.url;
+
+                $rootScope.seo = {
+                    pageTitle: $scope.item.title,
+                    pageDescription: $scope.item.brevedescricao,
+                    pageURL: config.siteUrl + "#!/jurisprudencia/" + $scope.item.url
+                };
 
                 if ($scope.item.assuntos != undefined)
                     if ($scope.item.assuntos.length > 0)

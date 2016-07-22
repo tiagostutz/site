@@ -1,4 +1,4 @@
-﻿angular.module("Servidor").controller('AtuacoesCtrl', function ($scope, $route, $rootScope, atuacoesAPI, $sce) {
+﻿angular.module("Servidor").controller('AtuacoesCtrl', function ($scope, $route, $rootScope, atuacoesAPI, $sce, config) {
 
     $scope.loading = false;
     $scope.loadingRelacionados = false;
@@ -104,6 +104,12 @@
                 $rootScope.tituloPaginaURL = $scope.item.title;
                 $rootScope.linkPaginaURL = $scope.item.url;
 
+                $rootScope.seo = {
+                    pageTitle: $scope.item.title,
+                    pageDescription: $scope.item.brevedescricao,
+                    pageURL: config.siteUrl + "#!/atuacoes/" + $scope.item.url
+                };
+
                 if ($scope.item.assuntos.length > 0) {
                     $scope.loadingRelacionados = true;
                     carregarConteudoRelacionado();
@@ -126,6 +132,13 @@
 
                 $rootScope.tituloPaginaURL = $scope.item.title;
                 $rootScope.linkPaginaURL = $scope.item.url;
+                
+                $rootScope.seo = {
+                    pageTitle: $scope.item.title,
+                    pageDescription: $scope.item.brevedescricao,
+                    pageURL: config.siteUrl + "#!/atuacoes/" + $scope.item.url
+                };
+
             }
         });
     };

@@ -1,4 +1,4 @@
-﻿angular.module("Servidor").controller('SegmentosCtrl', function ($scope, $route, segmentosAPI) {
+﻿angular.module("Servidor").controller('SegmentosCtrl', function ($scope, $route, segmentosAPI, config) {
 
     $scope.loading = false;
     $scope.lista = [];
@@ -21,6 +21,13 @@
                 $scope.item = data.data.resultado;
                 $scope.item = $scope.item[0];                
                 $scope.loading = false;
+
+                $rootScope.seo = {
+                    pageTitle: $scope.item.title,
+                    pageDescription: $scope.item.conteudo,
+                    pageURL: config.siteUrl + "#!/segmentos/" + valor
+                };
+
             }
         });
     };

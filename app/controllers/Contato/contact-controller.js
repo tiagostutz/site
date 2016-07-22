@@ -2,13 +2,11 @@
 'use strict';
 
 app.controller('Contact', ['$scope', 'ContactService',
-    function ($scope, contactService) {
-        $scope.mensagem_foco = "Mensagem de foco";
-        
-
-        $scope.save = function(teste){
-            alert(teste);
-            contactService.save();
-        }
+    function ($scope, $route, $rootScope, config) {
+       $rootScope.seo = {
+            pageTitle: "Contato",
+            pageDescription: "A defesa dos servidores públicos, do concurso à aposentadoria.",
+            pageURL: config.siteUrl + "#!/contato/"
+        };
     }
 ]);

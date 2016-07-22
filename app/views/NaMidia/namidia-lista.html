@@ -59,9 +59,9 @@
             <div class="text-left loading" ng-show="loading"><img src="/app/themes/img/facebook.gif" style="position: relative;top: 10px;margin-right: 10px;" /></div>
             <ul ng-show="conteudocarregado">
                 <li class="informes">
-                    <h1 class="title"><a href="{{'/#/namidia/' + item.url}}">{{item.title}}</a></h1>
+                    <h1 class="title"><a href="{{'/#!/namidia/' + item.url}}">{{item.title}}</a></h1>
 
-                    <img src="/app/img-site/icon-calendar.png" />&nbsp;<span class="date" ng-bind="item.dataPublicacao | date:'dd/MM/yyyy'"></span>&nbsp;|&nbsp;<span ng-repeat="campo in item.camposdeInteresse"><a href="/#/informes/interesse/{{campo.id}}" style="background-color:{{campo.cor}};padding:5px 10px;color:white;font-weight:bold;font-size:11px;border-radius:1px;"><img ng-src="{{campo.iconeBranco}}" class="interesses-iconebranco" />&nbsp;{{campo.title}}</a>&nbsp;|&nbsp;</span><a href="/#/informes/tipo/namidia" class="informe-tipo">Na Mídia</a>
+                    <img src="/app/img-site/icon-calendar.png" />&nbsp;<span class="date" ng-bind="item.dataPublicacao | date:'dd/MM/yyyy'"></span>&nbsp;|&nbsp;<span ng-repeat="campo in item.camposdeInteresse"><a href="/#!/informes/interesse/{{campo.id}}" style="background-color:{{campo.cor}};padding:5px 10px;color:white;font-weight:bold;font-size:11px;border-radius:1px;"><img ng-src="{{campo.iconeBranco}}" class="interesses-iconebranco" />&nbsp;{{campo.title}}</a>&nbsp;|&nbsp;</span><a href="/#!/informes/tipo/namidia" class="informe-tipo">Na Mídia</a>
                     <br />
                     <p ng-bind-html="item.corpo" style="padding-top:20px"></p>
                     <span ng-bind-html="labelVeiculos"></span><br />

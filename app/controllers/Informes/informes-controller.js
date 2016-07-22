@@ -1,4 +1,4 @@
-﻿angular.module("Servidor").controller('InformesCtrl', function ($scope, $route, $rootScope, $location, informesAPI) {
+﻿angular.module("Servidor").controller('InformesCtrl', function ($scope, $route, $rootScope, $location, informesAPI, config) {
 
     $scope.loading = false;
     $scope.hasInformation = true;
@@ -45,7 +45,7 @@
         $scope.pagination = false;
         $scope.previouspage = "index.html#";
         $scope.nextpage = "index.html#";
-        $scope.origempage = "#/informes/tipo/" + tipo + "/page/";
+        $scope.origempage = "#!/informes/tipo/" + tipo + "/page/";
 
         var pagina = $route.current.params.page == undefined ? 0 : $route.current.params.page;
         informesAPI.getPorTipo(tipo, 10, pagina).then(function (data) {
@@ -82,7 +82,7 @@
         $scope.pagination = false;
         $scope.previouspage = "index.html#";
         $scope.nextpage = "index.html#";
-        $scope.origempage = "#/informes/interesse/" + campodeinteresse + "/page/";
+        $scope.origempage = "#!/informes/interesse/" + campodeinteresse + "/page/";
 
         var pagina = $route.current.params.page == undefined ? 0 : $route.current.params.page;
 
@@ -190,6 +190,12 @@
 
                 $rootScope.tituloPaginaURL = $scope.item.title;
                 $rootScope.linkPaginaURL = $scope.item.url;
+
+                $rootScope.seo = {
+                    pageTitle: $scope.item.title,
+                    pageDescription: $scope.item.brevedescricao,
+                    pageURL: config.siteUrl + $scope.item.url
+                };
             }
         });
     };

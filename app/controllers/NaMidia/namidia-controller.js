@@ -1,4 +1,4 @@
-﻿angular.module("Servidor").controller('NaMidiaCtrl', function ($scope, $route, $rootScope, namidiaAPI, $sce) {
+﻿angular.module("Servidor").controller('NaMidiaCtrl', function ($scope, $route, $rootScope, namidiaAPI, $sce, config) {
 
     $scope.loading = false;
     $scope.loadingRelacionados = false;
@@ -59,6 +59,13 @@
 
                 $rootScope.tituloPaginaURL = $scope.item.title;
                 $rootScope.linkPaginaURL = $scope.item.url;
+                
+                $rootScope.seo = {
+                    pageTitle: $scope.item.title,
+                    pageDescription: $scope.item.brevedescricao,
+                    pageURL: config.siteUrl + "#!/namidia/" + $scope.item.url
+                };
+
                 $scope.conteudocarregado = true;
                 
                 if ($scope.item.veiculos.length > 1)
@@ -94,6 +101,12 @@
 
                 $rootScope.tituloPaginaURL = $scope.item.title;
                 $rootScope.linkPaginaURL = $scope.item.url;
+
+                $rootScope.seo = {
+                    pageTitle: $scope.item.title,
+                    pageDescription: $scope.item.brevedescricao,
+                    pageURL: config.siteUrl + "#!/namidia/" + $scope.item.url
+                };
             }
         });
     };

@@ -1,4 +1,4 @@
-﻿angular.module("Servidor").controller('JulgadosComentadosCtrl', function ($scope, $route, $rootScope, julgadoscomentadosAPI) {
+﻿angular.module("Servidor").controller('JulgadosComentadosCtrl', function ($scope, $route, $rootScope, julgadoscomentadosAPI, config) {
 
     $scope.loading = false;
     $scope.hasInformation = true;
@@ -21,6 +21,13 @@
                         $scope.item = $scope.lista[0];
                         $rootScope.tituloPaginaURL = $scope.item.title;
                         $rootScope.linkPaginaURL = $scope.item.url;
+                        
+                        $rootScope.seo = {
+                            pageTitle: $scope.item.title,
+                            pageDescription: $scope.item.brevedescricao,
+                            pageURL: config.siteUrl + "#!/julgadoscomentados/" + $scope.item.url
+                        };
+
                     }
                 }
             }
