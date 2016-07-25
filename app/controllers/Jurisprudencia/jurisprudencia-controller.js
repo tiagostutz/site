@@ -42,7 +42,7 @@
 
                     $rootScope.seo = {
                         pageTitle: $scope.item.title,
-                        pageDescription: $scope.item.brevedescricao,
+                        pageDescription: $scope.item.breveDescricao,
                         pageURL: config.siteUrl + "#!/jurisprudencia/" + $scope.item.url
                     };
 
@@ -97,7 +97,7 @@
 
                     $rootScope.seo = {
                         pageTitle: $scope.item.title,
-                        pageDescription: $scope.item.brevedescricao,
+                        pageDescription: $scope.item.breveDescricao,
                         pageURL: config.siteUrl + "#!/jurisprudencia/" + $scope.item.url
                     };
 
@@ -142,7 +142,7 @@
 
                     $rootScope.seo = {
                         pageTitle: $scope.item.title,
-                        pageDescription: $scope.item.brevedescricao,
+                        pageDescription: $scope.item.breveDescricao,
                         pageURL: config.siteUrl + "#!/jurisprudencia/" + $scope.item.url
                     };
 
@@ -178,7 +178,7 @@
 
                 $rootScope.seo = {
                     pageTitle: $scope.item.title,
-                    pageDescription: $scope.item.brevedescricao,
+                    pageDescription: $scope.item.breveDescricao,
                     pageURL: config.siteUrl + "#!/jurisprudencia/" + $scope.item.url
                 };
 
