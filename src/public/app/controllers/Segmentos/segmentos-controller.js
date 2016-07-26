@@ -19,15 +19,8 @@
         segmentosAPI.getItem(valor, tipo).then(function (data) {
             if (data.statusText == "OK") {
                 $scope.item = data.data.resultado;
-                $scope.item = $scope.item[0];                
+                $scope.item = $scope.item[0];
                 $scope.loading = false;
-
-                $rootScope.seo = {
-                    pageTitle: $scope.item.title,
-                    pageDescription: $scope.item.conteudo,
-                    pageURL: config.siteUrl + "#!/segmentos/" + valor
-                };
-
             }
         });
     };

@@ -1,18 +1,8 @@
 version: '2'
 
-networks:
-  balancer_site_network:
-    external: true
-
 services:
   www_novo_servidoradv:
-    image: nginx:alpine
-    volumes:
-      - /var/app/site/site:/usr/share/nginx/html:ro
-
-    networks:
-      - balancer_site_network
+    image: servidoradv/site_novo
 
     ports:
-      - "8001:80"
-      - "8031:443"
+      - "8001:8001"
