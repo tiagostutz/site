@@ -5,6 +5,12 @@
         position: relative !important;
     }
 
+    #wrapper-banners
+    {
+        background-color: #F4F4F4;
+        overflow-y:hidden
+    }
+
     .banners-home-active {
         opacity: 1.0;
     }
@@ -53,7 +59,7 @@
 <div id="wrapper-banners" ng-controller="UtilidadeCtrl">
     <div style="text-align:center" ng-show="loading"><img src="/app/themes/img/facebook.gif" style="position: relative;top: 10px;display:normal" /><br /><br /><small>Carregando conteúdo...</small></div>
 
-    <section id="banners" style="height: 650px;overflow: hidden;" ng-show="isLoaded">
+    <section id="banners" style="height: 600px;overflow: hidden;" ng-show="isLoaded">
         <div class="banners-wrapper">
             <div id="colunas1" class="campos-de-interesse box-itens-escritorio banners-home banners-home-active" style="float:left">
                 <div class="content">
@@ -65,9 +71,7 @@
                                     <div class="div" ng-style="{'background' : 'url(' + coluna1[0].imagem + ') no-repeat' }" style="background-size:cover">
                                         <div class="overlay"></div>
                                         <div class="conteudo-bloco">
-
                                             <h1 ng-bind-html="coluna1[0].title"></h1>
-
                                         </div>
                                         <div class="detalhe">
                                             <div class="data" ng-bind="coluna1[0].dataPublicacao"></div>
@@ -1040,7 +1044,19 @@
             float: left;
         }
 
+    #banners-next, #banners-prev
+    {
+        top:40%;
+    }
+
+
     @media screen and (max-width: 1024px) {
+
+    #banners
+    {
+        margin:0 auto!important;
+    }
+
         #banners .content {
             width: 100%;
             padding: 0px;

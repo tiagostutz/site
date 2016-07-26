@@ -62,7 +62,7 @@
                 
                 $rootScope.seo = {
                     pageTitle: $scope.item.title,
-                    pageDescription: $scope.item.brevedescricao,
+                    pageDescription: $scope.item.breveDescricao,
                     pageURL: config.siteUrl + "#!/namidia/" + $scope.item.url
                 };
 
@@ -104,7 +104,7 @@
 
                 $rootScope.seo = {
                     pageTitle: $scope.item.title,
-                    pageDescription: $scope.item.brevedescricao,
+                    pageDescription: $scope.item.breveDescricao,
                     pageURL: config.siteUrl + "#!/namidia/" + $scope.item.url
                 };
             }
