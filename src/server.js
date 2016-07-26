@@ -8,7 +8,7 @@ var app            = express();
 
 port = process.env.PORT || 8001;
 
-var prerender = require('prerender-node').set('prerenderToken', 's7zDfbP07ipE4JZKETcm');
+app.use(require('prerender-node').set('prerenderToken', 's7zDfbP07ipE4JZKETcm'));
 
 app.use('/*', function(req, res, next) {
     next();
@@ -18,11 +18,7 @@ app.use(express.static(__dirname + '/public/', { maxAge: 864 * 7 /* 1d */ }));  
 
 function serve(baseName) {
   app.use(`/${baseName}*`, function(req, res){
-    if (!prerender.shouldShowPrerenderedPage(req))  {
-      res.sendfile(__dirname + "/public/index.html");
-    }else{
-      request("http://service.prerender.io/http://novo.servidor.adv.br"+req.originalUrl).pipe(res);
-    }
+    res.sendfile(__dirname + "/public/index.html");
   });
 }
 var pages = ['advogados', 'atuacoes', 'camposdeinteresse', 'segmentos', 'clientes', 'vitorias', 'contato', 'imprensa', 'informes', ''];
