@@ -4,6 +4,7 @@ var morgan         = require('morgan');
 var bodyParser     = require('body-parser');
 var methodOverride = require('method-override');
 var compress       = require('compression');
+var request           = require('request');
 var app            = express();
 
 port = process.env.PORT || 8001;
