@@ -29,7 +29,7 @@
           window.open(url);
 
         }else{
-          window.location = url;
+window.location = url.replace('/#', '');
         }
     };
 

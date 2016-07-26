@@ -195,7 +195,7 @@ app.config(['$httpProvider',function ($httpProvider)
             redirectTo: '/'
         });
 
-    $locationProvider.html5Mode();
+    $locationProvider.html5Mode(true);
     $locationProvider.hashPrefix('!');
     
 });
