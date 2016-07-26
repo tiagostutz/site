@@ -12,6 +12,7 @@
     "morgan": "latest",
     "compression": "latest",
     "method-override":"latest",
-    "body-parser": "latest"
+    "body-parser": "latest",
+    "request": "latest"
   }
 }
