@@ -22,6 +22,7 @@ function serve(baseName) {
     if (!prerender.shouldShowPrerenderedPage(req))  {
       res.sendfile(__dirname + "/public/index.html");
     }else{
+      console.log("http://service.prerender.io/http://novo.servidor.adv.br"+req.originalUrl);
       request("http://service.prerender.io/http://novo.servidor.adv.br"+req.originalUrl).pipe(res);
     }
   });
