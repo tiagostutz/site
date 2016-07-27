@@ -38,21 +38,21 @@ function serve(baseName) {
     var prerenderURL = "http://service.prerender.io/http://novo.servidor.adv.br"+req.originalUrl;
 
     if (!prerender.shouldShowPrerenderedPage(req))  {
-        fine('Procurando no cache... ' + req.originalUrl);
-        client.get(req.originalUrl, function(err, result) {
-          if (err || !result) {
-            fine('Cacheando... ' + req.originalUrl);
-            request(prerenderURL, function(errorSEO, responseSEO, bodySEO) {
-              client.set(req.originalUrl, bodySEO);
-              info('Pagina cacheada > ' + req.originalUrl);
-            });
-          }else{
-            info('Pagina encontrada no cache > ' + req.originalUrl);
-          }
-        });
-      }
 
+      fine('Procurando no cache... ' + req.originalUrl);
+      client.get(req.originalUrl, function(err, result) {
+        if (err || !result) {
+          fine('Cacheando... ' + req.originalUrl);
+          request(prerenderURL, function(errorSEO, responseSEO, bodySEO) {
+            client.set(req.originalUrl, bodySEO);
+            info('Pagina cacheada > ' + req.originalUrl);
+          });
+        }else{
+          info('Pagina encontrada no cache > ' + req.originalUrl);
+        }
+      });
       res.sendFile(__dirname + "/public/index.html");
+
     }else{
       client.get(req.originalUrl, function(err, result) {
         if (!err && result) {
