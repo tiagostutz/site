@@ -43,6 +43,7 @@ function serve(baseName) {
       client.get(req.originalUrl, function(err, result) {
         if (err || !result) {
           fine('Cacheando... ' + req.originalUrl);
+          client.set(req.originalUrl, 'caching'); //para 'lockar' o registro
           request(prerenderURL, function(errorSEO, responseSEO, bodySEO) {
             client.set(req.originalUrl, bodySEO);
             info('Pagina cacheada > ' + req.originalUrl);
