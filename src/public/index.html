@@ -2,35 +2,33 @@
 <html ng-app="Servidor">
 
 <head>
-    <script src="http://novo.servidor.adv.br/app/bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="http://novo.servidor.adv.br/app/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="http://novo.servidor.adv.br/app/bower_components/angular/angular.min.js"></script>
-    <script src="http://novo.servidor.adv.br/app/bower_components/angular/angular-sanitize.js"></script>
-    <script src="http://novo.servidor.adv.br/app/bower_components/angular-route/angular-route.min.js"></script>
-    <script src="http://novo.servidor.adv.br/app/bower_components/angular-update-meta/update-meta-min.js"></script>
-    <script src="http://novo.servidor.adv.br/app/bower_components/angular-busy/angular-busy.js"></script>
-
-    <meta name="fragment" content="!">
-
-    <title>Cassel Ruzzarin Santos Rodrigues - {{seo.pageTitle}}</title>
-
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-
     <meta charset=utf-8>
     <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title ng-bind="seo.pageTitle + ' - Cassel Ruzzarin Santos Rodrigues Advogados - Notícias'"></title>
     <meta name="title" content="Cassel Ruzzarin Santos Rodrigues - {{seo.pageTitle}}">
-    <meta name="description" content="{{seo.pageDescription}}">
-    <!-- Google will often use this as its description of your page/site. Make it good. -->
-    <meta property="og:site_name" content="Cassel Ruzzarin Santos Rodrigues - {{seo.pageTitle}}" />
     <meta property="og:title" content="{{seo.pageTitle}}" />
+    <meta name="description" content="{{seo.pageDescription}}">
+    <meta name="og:description" content="{{seo.pageDescription}}">
+
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:site_name" content="{{seo.pageDescription}}" />
     <meta property="og:url" content="{{seo.pageURL}}" />
+
     <meta property="og:type" content="website" />
-    <meta property="fb:admins" content="" />
-    <!--<meta property="og:video" content="" />
-    <meta property="og:video:type" content="" />-->
     <meta property="og:image" content="http://novo.servidor.adv.br/app/img/ui/sala_advogados_bsb.jpg" />
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="640">
+    <meta property="og:image:height" content="326">
+    <meta name="fragment" content="!">
+
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <meta property="fb:admins" content="" />
+
+
+    <!-- Google will often use this as its description of your page/site. Make it good. -->
     <meta name="author" content="Cassel Ruzzarin Santos Rodrigues Advogados">
 
     <!-- Dublin Core Metadata : http://dublincore.org/ -->
@@ -62,7 +60,14 @@
 
 
     <link rel="stylesheet" type="text/css" href="http://novo.servidor.adv.br/app/themes/css/ie-fix.css" />
-    <meta content="IE=9" http-equiv="X-UA-Compatible">
+
+    <script src="http://novo.servidor.adv.br/app/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="http://novo.servidor.adv.br/app/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="http://novo.servidor.adv.br/app/bower_components/angular/angular.min.js"></script>
+    <script src="http://novo.servidor.adv.br/app/bower_components/angular/angular-sanitize.js"></script>
+    <script src="http://novo.servidor.adv.br/app/bower_components/angular-route/angular-route.min.js"></script>
+    <script src="http://novo.servidor.adv.br/app/bower_components/angular-update-meta/update-meta-min.js"></script>
+    <script src="http://novo.servidor.adv.br/app/bower_components/angular-busy/angular-busy.js"></script>
 
     <script src="http://novo.servidor.adv.br/app.js"></script>
     <script src="http://novo.servidor.adv.br/app/js/configValues.js"></script>
@@ -129,7 +134,7 @@
 
     <link rel="stylesheet" href="http://novo.servidor.adv.br/app/themes/css/styles.css" />
 
-    <base href="http://novo.servidor.adv.br/" />
+    <base href="/" />
 
 </head>
 <body>
