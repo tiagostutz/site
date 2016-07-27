@@ -1,24 +1,24 @@
-﻿<!-- 
+﻿<!--
 <section id="cabecalho-paginas" class="informes-cabecalho">
     <input type="hidden" id="assuntos" value="{{item.assuntos}}" />
     <div class="box-itens-escritorio">
         <h2>INFORMES</h2>
         <ul class="list-inline">
             <li>
-                <a href="/#/informes/tipo/noticias">
-                    <img src="/app/img-site/icone-noticias.png" />
+                <a href="http://novo.servidor.adv.br/#/informes/tipo/noticias">
+                    <img src="http://novo.servidor.adv.br/app/img-site/icone-noticias.png" />
                     <div>NOTÍCIAS</div>
                 </a>
             </li>
             <li>
-                <a href="/#/informes/tipo/atuacoes">
-                    <img src="/app/img-site/icone-atuacoes.png" />
+                <a href="http://novo.servidor.adv.br/#/informes/tipo/atuacoes">
+                    <img src="http://novo.servidor.adv.br/app/img-site/icone-atuacoes.png" />
                     <div>ATUAÇÕES</div>
                 </a>
             </li>
             <li>
-                <a href="/#/informes/tipo/namidia">
-                    <img src="/app/img-site/icone-namidia.png" />
+                <a href="http://novo.servidor.adv.br/#/informes/tipo/namidia">
+                    <img src="http://novo.servidor.adv.br/app/img-site/icone-namidia.png" />
                     <div>NA MÍDIA</div>
                 </a>
             </li>
@@ -59,13 +59,13 @@
 <div class="content">
     <div class="row">
         <div class="col-md-8 col-xs-12 pagina-bgbranco">
-            <div class="text-align loading" ng-show="loading"><img src="/app/themes/img/facebook.gif" style="position: relative;top: 10px;margin-right: 10px;" /></div>
+            <div class="text-align loading" ng-show="loading"><img src="http://novo.servidor.adv.br/app/themes/img/facebook.gif" style="position: relative;top: 10px;margin-right: 10px;" /></div>
             <div class="informes" ng-show="conteudocarregado">
                 <h1 class="title"><a href="{{'/#!/noticias/' + item.url}}">{{item.title}}</a></h1>
 
-                <img src="/app/img-site/icon-calendar.png" /> <span class="date" ng-bind="item.dataPublicacao | date:'dd/MM/yyyy'"></span>&nbsp;|
-                &nbsp;<span class="icone-interesse" ng-repeat="campo in item.camposdeInteresse"><a href="/#!/informes/interesse/{{campo.id}}" style="background-color:{{campo.cor}};padding:5px 10px;color:white;font-weight:bold;font-size:11px;border-radius:1px;"><img ng-src="{{campo.iconeBranco}}" class="interesses-iconebranco" />&nbsp;{{campo.title}}</a>&nbsp;|&nbsp;</span>
-                <a href="/#!/informes/tipo/noticias" class="informe-tipo">Notícias</a>
+                <img src="http://novo.servidor.adv.br/app/img-site/icon-calendar.png" /> <span class="date" ng-bind="item.dataPublicacao | date:'dd/MM/yyyy'"></span>&nbsp;|
+                &nbsp;<span class="icone-interesse" ng-repeat="campo in item.camposdeInteresse"><a href="http://novo.servidor.adv.br/#!/informes/interesse/{{campo.id}}" style="background-color:{{campo.cor}};padding:5px 10px;color:white;font-weight:bold;font-size:11px;border-radius:1px;"><img ng-src="{{campo.iconeBranco}}" class="interesses-iconebranco" />&nbsp;{{campo.title}}</a>&nbsp;|&nbsp;</span>
+                <a href="http://novo.servidor.adv.br/#!/informes/tipo/noticias" class="informe-tipo">Notícias</a>
                 <br /><br />
                 <p ng-bind-html="item.corpo"></p>
             </div>
@@ -77,7 +77,7 @@
                 <div class="text-align alert alert-warning" ng-show="nenhumConteudoRelacionado">
                     Nenhum conteúdo relacionado encontrado.
                 </div>
-                <div class="text-align loading" ng-show="loadingRelacionados"><img src="/app/themes/img/facebook.gif" style="position: relative;top: 10px;margin-right: 10px;" /></div>
+                <div class="text-align loading" ng-show="loadingRelacionados"><img src="http://novo.servidor.adv.br/app/themes/img/facebook.gif" style="position: relative;top: 10px;margin-right: 10px;" /></div>
                 <ul class="list-unstyled">
                     <li class="cat-item hr" ng-repeat="rel in itensRelacionados">
                         <i class="glyphicon glyphicon-chevron-right"></i>&nbsp;
