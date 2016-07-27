@@ -6,22 +6,25 @@ var methodOverride = require('method-override');
 var compress       = require('compression');
 var request        = require('request');
 var redis          = require('redis');
+var fine          = require('debug')('fine')
+var info          = require('debug')('info')
+var error          = require('debug')('error')
 var app            = express();
 
 port = process.env.PORT || 8001;
 
 var prerender = require('prerender-node').set('prerenderToken', 's7zDfbP07ipE4JZKETcm');
 
-console.log('Conectando ao REDIS');
+fine('Conectando ao REDIS');
 var client = redis.createClient(6379,'redis');
 client.set('last_start', new Date().getTime());
 
 client.get('last_start', function(err, result) {
-  console.log("Redis ready.... " + result);
+  info("Redis ready.... " + result);
 });
 
 client.on("error", function (err) {
-    console.log("REDIS-Error " + err);
+  error("REDIS-Error " + err);
 });
 
 app.use('/*', function(req, res, next) {
@@ -40,10 +43,10 @@ function serve(baseName) {
         if (!err && result) {
             res.status(200).send(result);
         } else {
-            console.log('Cacheando...');
+            fine('Cacheando...');
             request(url, function(errorSEO, responseSEO, bodySEO) {
               client.set(url, bodySEO);
-              console.log('Pagina cacheada...');
+              fine('Pagina cacheada...');
               res.status(200).send(bodySEO);
             });
         }
@@ -66,4 +69,4 @@ app.use(methodOverride());                  // simulate DELETE and PUT
 app.use(compress());
 
 app.listen(port);
-console.log('novo.servidor.adv.br rodando na porta ' + port);          // shoutout to the user
+info('novo.servidor.adv.br rodando na porta ' + port);          // shoutout to the user

@@ -14,6 +14,7 @@
     "method-override":"latest",
     "body-parser": "latest",
     "request": "latest",
-    "redis": "latest"
+    "redis": "latest",
+    "debug": "latest"
   }
 }

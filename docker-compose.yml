@@ -7,6 +7,9 @@ services:
     ports:
       - "8001:8001"
 
+    environment:
+      - DEBUG=error
+
   redis:
     image: redis:alpine
     volumes:
