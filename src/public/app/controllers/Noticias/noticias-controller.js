@@ -1,5 +1,5 @@
 angular.module("Servidor").controller('NoticiasCtrl', function ($scope, $route, $rootScope, noticiasAPI, $sce, config) {
-    
+
     $scope.loading = false;
     $scope.loadingRelacionados = false;
     $scope.nenhumConteudoRelacionado = false;
@@ -31,9 +31,9 @@ angular.module("Servidor").controller('NoticiasCtrl', function ($scope, $route, 
                 $rootScope.seo = {
                     pageTitle: $scope.item.title,
                     pageDescription: $scope.item.breveDescricao,
-                    pageURL: config.siteUrl + "#!/noticias/" + $scope.item.url
+                    pageURL: config.siteUrl + "/noticias/" + $scope.item.url
                 };
-                
+
                 if ($scope.item.assuntos.length > 0) {
                     $scope.loadingRelacionados = true;
                     carregarConteudoRelacionado();
@@ -85,7 +85,7 @@ angular.module("Servidor").controller('NoticiasCtrl', function ($scope, $route, 
                 $rootScope.seo = {
                     pageTitle: $scope.item.title,
                     pageDescription: $scope.item.breveDescricao,
-                    pageURL: config.siteUrl + "#!/noticias/" + $scope.item.url
+                    pageURL: config.siteUrl + "/noticias/" + $scope.item.url
                 };
             }
         });
@@ -97,5 +97,5 @@ angular.module("Servidor").controller('NoticiasCtrl', function ($scope, $route, 
         carregarNoticiaPorUrl($route.current.params.url);
     else
         carregarNoticias();
-    
+
 });

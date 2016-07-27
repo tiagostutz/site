@@ -42,8 +42,8 @@ function serve(baseName) {
       client.get(url, function(err, result) {
         if (!err && result) {
             fine('Enviando pagina cacheada...');
-            fine(result);
             res.status(200).send(result);
+            fine(result);
         } else {
             fine('Cacheando...');
             request(url, function(errorSEO, responseSEO, bodySEO) {
