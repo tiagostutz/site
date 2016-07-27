@@ -20,7 +20,7 @@
         $scope.pagination = false;
         $scope.previouspage = "index.html#";
         $scope.nextpage = "index.html#";
-        $scope.origempage = "#!/jurisprudencia/page/";
+        $scope.origempage = "/jurisprudencia/page/";
 
         var pagina = $route.current.params.page == undefined ? 0 : $route.current.params.page;
         jurisprudenciaAPI.getLista(10, pagina).then(function (data) {
@@ -43,7 +43,7 @@
                     $rootScope.seo = {
                         pageTitle: $scope.item.title,
                         pageDescription: $scope.item.breveDescricao,
-                        pageURL: config.siteUrl + "#!/jurisprudencia/" + $scope.item.url
+                        pageURL: config.siteUrl + "/jurisprudencia/" + $scope.item.url
                     };
 
                 }
@@ -98,7 +98,7 @@
                     $rootScope.seo = {
                         pageTitle: $scope.item.title,
                         pageDescription: $scope.item.breveDescricao,
-                        pageURL: config.siteUrl + "#!/jurisprudencia/" + $scope.item.url
+                        pageURL: config.siteUrl + "/jurisprudencia/" + $scope.item.url
                     };
 
                 }
@@ -143,7 +143,7 @@
                     $rootScope.seo = {
                         pageTitle: $scope.item.title,
                         pageDescription: $scope.item.breveDescricao,
-                        pageURL: config.siteUrl + "#!/jurisprudencia/" + $scope.item.url
+                        pageURL: config.siteUrl + "/jurisprudencia/" + $scope.item.url
                     };
 
                 }
@@ -168,7 +168,7 @@
         $scope.loading = true;
         jurisprudenciaAPI.getItem(param, valor).then(function (data) {
             if (data.statusText == "OK") {
-                if (param == "url") 
+                if (param == "url")
                     $scope.item = data.data.resultado[0];
                 else
                     $scope.item = data.data.resultado;
@@ -179,7 +179,7 @@
                 $rootScope.seo = {
                     pageTitle: $scope.item.title,
                     pageDescription: $scope.item.breveDescricao,
-                    pageURL: config.siteUrl + "#!/jurisprudencia/" + $scope.item.url
+                    pageURL: config.siteUrl + "/jurisprudencia/" + $scope.item.url
                 };
 
                 if ($scope.item.assuntos != undefined)

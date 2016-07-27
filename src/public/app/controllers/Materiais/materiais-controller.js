@@ -10,7 +10,7 @@
     $rootScope.seo = {
         pageTitle: 'Materiais',
         pageDescription: '',
-        pageURL: config.siteUrl + "#!/materiais"
+        pageURL: config.siteUrl + "/materiais"
     }
 
 
@@ -48,7 +48,7 @@
         $scope.loading = true;
         materiaisAPI.getItem(param, valor).then(function (data) {
             if (data.statusText == "OK") {
-                if (param == "url") 
+                if (param == "url")
                     $scope.item = data.data.resultado[0];
                 else
                     $scope.item = data.data.resultado;

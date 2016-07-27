@@ -61,11 +61,11 @@
         <div class="col-md-8 col-xs-12 pagina-bgbranco">
             <div class="text-align loading" ng-show="loading"><img src="http://novo.servidor.adv.br/app/themes/img/facebook.gif" style="position: relative;top: 10px;margin-right: 10px;" /></div>
             <div class="informes" ng-show="conteudocarregado">
-                <h1 class="title"><a href="{{'/#!/noticias/' + item.url}}">{{item.title}}</a></h1>
+                <h1 class="title"><a href="{{'/noticias/' + item.url}}">{{item.title}}</a></h1>
 
                 <img src="http://novo.servidor.adv.br/app/img-site/icon-calendar.png" /> <span class="date" ng-bind="item.dataPublicacao | date:'dd/MM/yyyy'"></span>&nbsp;|
-                &nbsp;<span class="icone-interesse" ng-repeat="campo in item.camposdeInteresse"><a href="http://novo.servidor.adv.br/#!/informes/interesse/{{campo.id}}" style="background-color:{{campo.cor}};padding:5px 10px;color:white;font-weight:bold;font-size:11px;border-radius:1px;"><img ng-src="{{campo.iconeBranco}}" class="interesses-iconebranco" />&nbsp;{{campo.title}}</a>&nbsp;|&nbsp;</span>
-                <a href="http://novo.servidor.adv.br/#!/informes/tipo/noticias" class="informe-tipo">Notícias</a>
+                &nbsp;<span class="icone-interesse" ng-repeat="campo in item.camposdeInteresse"><a href="http://novo.servidor.adv.br/informes/interesse/{{campo.id}}" style="background-color:{{campo.cor}};padding:5px 10px;color:white;font-weight:bold;font-size:11px;border-radius:1px;"><img ng-src="{{campo.iconeBranco}}" class="interesses-iconebranco" />&nbsp;{{campo.title}}</a>&nbsp;|&nbsp;</span>
+                <a href="http://novo.servidor.adv.br/informes/tipo/noticias" class="informe-tipo">Notícias</a>
                 <br /><br />
                 <p ng-bind-html="item.corpo"></p>
             </div>

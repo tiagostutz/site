@@ -45,7 +45,7 @@
         $scope.pagination = false;
         $scope.previouspage = "index.html#";
         $scope.nextpage = "index.html#";
-        $scope.origempage = "#!/informes/tipo/" + tipo + "/page/";
+        $scope.origempage = "/informes/tipo/" + tipo + "/page/";
 
         var pagina = $route.current.params.page == undefined ? 0 : $route.current.params.page;
         informesAPI.getPorTipo(tipo, 10, pagina).then(function (data) {
@@ -82,7 +82,7 @@
         $scope.pagination = false;
         $scope.previouspage = "index.html#";
         $scope.nextpage = "index.html#";
-        $scope.origempage = "#!/informes/interesse/" + campodeinteresse + "/page/";
+        $scope.origempage = "/informes/interesse/" + campodeinteresse + "/page/";
 
         var pagina = $route.current.params.page == undefined ? 0 : $route.current.params.page;
 

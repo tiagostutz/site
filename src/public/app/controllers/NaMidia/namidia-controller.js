@@ -14,7 +14,7 @@
         namidiaAPI.getItens(10).then(function (data) {
             if (data.statusText == "OK") {
                 $scope.lista = data.data.resultado;
-                
+
                 if ($scope.item.assuntos != undefined) {
                     $scope.loadingRelacionados = true;
                     carregarConteudoRelacionado();
@@ -59,20 +59,20 @@
 
                 $rootScope.tituloPaginaURL = $scope.item.title;
                 $rootScope.linkPaginaURL = $scope.item.url;
-                
+
                 $rootScope.seo = {
                     pageTitle: $scope.item.title,
                     pageDescription: $scope.item.breveDescricao,
-                    pageURL: config.siteUrl + "#!/namidia/" + $scope.item.url
+                    pageURL: config.siteUrl + "/namidia/" + $scope.item.url
                 };
 
                 $scope.conteudocarregado = true;
-                
+
                 if ($scope.item.veiculos.length > 1)
                     $scope.labelVeiculos = "Veiculos:";
                 else if ($scope.item.veiculos.length == 1)
                     $scope.labelVeiculos = "Veiculo:";
-                
+
                 if ($scope.item.assuntos.length > 0) {
                     $scope.loadingRelacionados = true;
                     carregarConteudoRelacionado($scope.item.assuntos[0].title);
@@ -105,7 +105,7 @@
                 $rootScope.seo = {
                     pageTitle: $scope.item.title,
                     pageDescription: $scope.item.breveDescricao,
-                    pageURL: config.siteUrl + "#!/namidia/" + $scope.item.url
+                    pageURL: config.siteUrl + "/namidia/" + $scope.item.url
                 };
             }
         });

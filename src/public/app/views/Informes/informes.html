@@ -2,19 +2,19 @@
     <div class="box-itens-escritorio">
         <ul class="list-inline">
             <li ng-class="getMenuTipoInformeStyle('noticias')">
-                <a href="/#!/informes/tipo/noticias">
+                <a href="/informes/tipo/noticias">
                     <img src="/app/img-site/icone-noticias.png" />
                     <div>NOTÍCIAS</div>
                 </a>
             </li>
             <li ng-class="getMenuTipoInformeStyle('atuacoes')">
-                <a href="/#!/informes/tipo/atuacoes">
+                <a href="/informes/tipo/atuacoes">
                     <img src="/app/img-site/icone-atuacoes.png" />
                     <div>ATUAÇÕES</div>
                 </a>
             </li>
             <li ng-class="getMenuTipoInformeStyle('namidia')">
-                <a href="/#!/informes/tipo/namidia">
+                <a href="/informes/tipo/namidia">
                     <img src="/app/img-site/icone-namidia.png" />
                     <div>NA MÍDIA</div>
                 </a>
@@ -74,12 +74,12 @@
             <div class="text-align loading" ng-show="loading"><img src="/app/themes/img/facebook.gif" style="position: relative;top: 10px;margin-right: 10px;" /></div>
             <ul id="ULContent">
                 <li class="informes" ng-repeat="n in lista">
-                    <h1 class="title"><a href="/#!/{{n.tipoUrl}}/{{n.url}}">{{n.title}}</a></h1>
-                    <img src="/app/img-site/icon-calendar.png" /> <span class="date" ng-bind="n.dataPublicacao | date:'dd/MM/yyyy'"></span>&nbsp;|&nbsp;<span class="icone-interesse" ng-repeat="campo in n.camposdeInteresse"><a href="/#!/informes/interesse/{{campo.id}}" ng-style="{'background-color': campo.cor}" style="padding:5px 10px;color:white;font-weight:bold;font-size:11px;border-radius:1px;"><img ng-src="{{campo.iconeBranco}}" class="interesses-iconebranco" />&nbsp;{{campo.title}}</a>&nbsp;|&nbsp;</span>
-                    <a href="/#!/informes/tipo/{{n.tipoUrl}}" class="informe-tipo"><span ng-bind="n.tipo"></span></a>
+                    <h1 class="title"><a href="/{{n.tipoUrl}}/{{n.url}}">{{n.title}}</a></h1>
+                    <img src="/app/img-site/icon-calendar.png" /> <span class="date" ng-bind="n.dataPublicacao | date:'dd/MM/yyyy'"></span>&nbsp;|&nbsp;<span class="icone-interesse" ng-repeat="campo in n.camposdeInteresse"><a href="/informes/interesse/{{campo.id}}" ng-style="{'background-color': campo.cor}" style="padding:5px 10px;color:white;font-weight:bold;font-size:11px;border-radius:1px;"><img ng-src="{{campo.iconeBranco}}" class="interesses-iconebranco" />&nbsp;{{campo.title}}</a>&nbsp;|&nbsp;</span>
+                    <a href="/informes/tipo/{{n.tipoUrl}}" class="informe-tipo"><span ng-bind="n.tipo"></span></a>
                     <div class="breveDescricao"><p><span ng-bind-html="n.breveDescricao + '...'"></span>...</p></div>
                     <br />
-                    <a href="/#!/{{n.tipoUrl}}/{{n.url}}" class="botao-leiamais">Leia mais</a>
+                    <a href="/{{n.tipoUrl}}/{{n.url}}" class="botao-leiamais">Leia mais</a>
                 </li>
             </ul>
         </div>

@@ -29,11 +29,11 @@ angular.module("Servidor").controller('CamposdeInteresseCtrl', function ($scope,
                 if (data.data.resultado != null)
                     $scope.exemplos = data.data.resultado.exemplos;
                 $scope.tituloPaginaURL = $route.current.params.urlcampo;
-                
+
                 $rootScope.seo = {
                     pageTitle: $scope.item.title,
                     pageDescription: $scope.item.descricao,
-                    pageURL: config.siteUrl + "#!/camposdeinteresse/" + $scope.item.url
+                    pageURL: config.siteUrl + "/camposdeinteresse/" + $scope.item.url
                 };
 
                 $scope.loading = false;
@@ -41,7 +41,7 @@ angular.module("Servidor").controller('CamposdeInteresseCtrl', function ($scope,
         });
     };
 
-    
+
     if ($route.current.params.urlcampo != undefined) {
         if ($route.current.params.urlcampo != "yes")
             carregarCampodeInteressePorUrl();

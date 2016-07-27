@@ -6,7 +6,7 @@ app.controller('Contact', ['$scope', 'ContactService',
        $rootScope.seo = {
             pageTitle: "Contato",
             pageDescription: "A defesa dos servidores públicos, do concurso à aposentadoria.",
-            pageURL: config.siteUrl + "#!/contato/"
+            pageURL: config.siteUrl + "/contato/"
         };
     }
 ]);

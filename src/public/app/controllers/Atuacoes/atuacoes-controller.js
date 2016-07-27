@@ -16,7 +16,7 @@
         var ultimo = parametros[parametros.length - 1];
     };
 
-    
+
 
     var carregarItens = function () {
         $scope.loading = true;
@@ -98,7 +98,7 @@
         atuacoesAPI.getPorUrl(url).then(function (data) {
             if (data.statusText == "OK") {
                 $scope.item = data.data.resultado;
-                
+
                 $scope.conteudocarregado = true;
 
                 $rootScope.tituloPaginaURL = $scope.item.title;
@@ -107,7 +107,7 @@
                 $rootScope.seo = {
                     pageTitle: $scope.item.title,
                     pageDescription: $scope.item.breveDescricao,
-                    pageURL: config.siteUrl + "#!/atuacoes/" + $scope.item.url
+                    pageURL: config.siteUrl + "/atuacoes/" + $scope.item.url
                 };
 
                 if ($scope.item.assuntos.length > 0) {
@@ -132,11 +132,11 @@
 
                 $rootScope.tituloPaginaURL = $scope.item.title;
                 $rootScope.linkPaginaURL = $scope.item.url;
-                
+
                 $rootScope.seo = {
                     pageTitle: $scope.item.title,
                     pageDescription: $scope.item.breveDescricao,
-                    pageURL: config.siteUrl + "#!/atuacoes/" + $scope.item.url
+                    pageURL: config.siteUrl + "/atuacoes/" + $scope.item.url
                 };
 
             }

@@ -4,11 +4,11 @@
             <div class="text-left loading" ng-show="loading"><img src="/app/themes/img/facebook.gif" style="position: relative;top: 10px;margin-right: 10px;" /></div>
             <ul>
                 <li class="informes" ng-repeat="item in lista">
-                    <h1 class="title"><a href="{{'/#!/atuacoes/' + item.url}}">{{item.title}}</a></h1>
-                    <img src="/app/img-site/icon-calendar.png" /> <span class="date" ng-bind="item.dataPublicacao | date:'dd/MM/yyyy'"></span>&nbsp;|&nbsp;<span class="icone-interesse" ng-repeat="campo in item.camposdeInteresse"><a href="/#!/informes/interesse/{{campo.id}}" ng-style="{'background-color':campo.cor}" style="padding:5px 10px;color:white;font-weight:bold;font-size:11px;border-radius:1px;"><img ng-src="{{campo.iconeBranco}}" class="interesses-iconebranco" />&nbsp;{{campo.title}}</a>&nbsp;</span>
+                    <h1 class="title"><a href="{{'/atuacoes/' + item.url}}">{{item.title}}</a></h1>
+                    <img src="/app/img-site/icon-calendar.png" /> <span class="date" ng-bind="item.dataPublicacao | date:'dd/MM/yyyy'"></span>&nbsp;|&nbsp;<span class="icone-interesse" ng-repeat="campo in item.camposdeInteresse"><a href="/informes/interesse/{{campo.id}}" ng-style="{'background-color':campo.cor}" style="padding:5px 10px;color:white;font-weight:bold;font-size:11px;border-radius:1px;"><img ng-src="{{campo.iconeBranco}}" class="interesses-iconebranco" />&nbsp;{{campo.title}}</a>&nbsp;</span>
                     <br />
                     <p class="breveDescricao" ng-bind-html="item.breveDescricao"></p>
-                    <a href="/#!/atuacoes/{{item.url}}" class="botao-leiamais">Leia mais</a>
+                    <a href="/atuacoes/{{item.url}}" class="botao-leiamais">Leia mais</a>
                 </li>
             </ul>
         </div>

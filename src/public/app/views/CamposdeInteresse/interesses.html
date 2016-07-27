@@ -5,54 +5,54 @@
                 <div class="dis">
                     <ul id="owl-demo2" class="owl-carousel owl-theme menuCamposInteresse">
                         <li ng-class="prerrogativaMenuCSS">
-                            <a href="/#!/camposdeinteresse/defesa-de-prerrogativas" title="Defesa de prerrogativas">
+                            <a href="/camposdeinteresse/defesa-de-prerrogativas" title="Defesa de prerrogativas">
                                 <img src="/app/img/ui/defesa_prerrogativas.svg">
 
                             </a>
                         </li>
                         <li ng-class="socialMenuCSS">
-                            <a href="/#!/camposdeinteresse/seguridade-social" title="Seguridade social">
+                            <a href="/camposdeinteresse/seguridade-social" title="Seguridade social">
                                 <img src="/app/img/ui/seguridade_social.svg">
 
                             </a>
                         </li>
                         <li ng-class="disciplinaMenuCSS">
-                            <a href="/#!/camposdeinteresse/disciplina-probidade-e-contas" title="Disciplina, probidade e contas">
+                            <a href="/camposdeinteresse/disciplina-probidade-e-contas" title="Disciplina, probidade e contas">
                                 <img src="/app/img/ui/disciplina_probidade_contas.svg">
 
                             </a>
                         </li>
                         <li ng-class="exercicioMenuCSS">
-                            <a href="/#!/camposdeinteresse/exercicio-e-afastamento" title="Exercício e afastamento">
+                            <a href="/camposdeinteresse/exercicio-e-afastamento" title="Exercício e afastamento">
                                 <img src="/app/img/ui/exercicio_afastamento.svg">
                             </a>
                         </li>
                         <li ng-class="segurancaMenuCSS">
-                            <a href="/#!/camposdeinteresse/saude-e-seguranca-do-trabalho" title="Saúde e segurança no trabalho">
+                            <a href="/camposdeinteresse/saude-e-seguranca-do-trabalho" title="Saúde e segurança no trabalho">
                                 <img src="/app/img/ui/saude_seguranca_trabalho.svg">
 
                             </a>
                         </li>
                         <li ng-class="remuneracaoMenuCSS">
-                            <a href="/#!/camposdeinteresse/remuneracao" title="Remuneração">
+                            <a href="/camposdeinteresse/remuneracao" title="Remuneração">
                                 <img src="/app/img/ui/remuneracao.svg">
 
                             </a>
                         </li>
                         <li ng-class="tributoMenuCSS" class="active">
-                            <a href="/#!/camposdeinteresse/tributos" title="Tributos">
+                            <a href="/camposdeinteresse/tributos" title="Tributos">
                                 <img src="/app/img/ui/tributos.svg">
 
                             </a>
                         </li>
                         <li ng-class="selecaoMenuCSS">
-                            <a href="/#!/camposdeinteresse/selecao-e-provimento" title="Seleção e provimento">
+                            <a href="/camposdeinteresse/selecao-e-provimento" title="Seleção e provimento">
                                 <img src="/app/img/ui/selecao_provimento.svg">
 
                             </a>
                         </li>
                         <li ng-class="sindicalMenuCSS">
-                            <a href="/#!/camposdeinteresse/liberdade-sindical-e-associativa" title="Liberdade sindical e associativa">
+                            <a href="/camposdeinteresse/liberdade-sindical-e-associativa" title="Liberdade sindical e associativa">
                                 <img src="/app/img/ui/liberdade_sindical_associativa.svg">
 
                             </a>
@@ -60,7 +60,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="campos_interesse_exemplos" style="width: 100%;float: none;">
+            <div class="campos_interesse_exemplos">
                 <section>
                     <h2 style="line-height: 35px;"><span>{{item.detalhamento}}</span></h2>
                     <p class="interesses-descricao" ng-bind-html="item.descricao"></p>
@@ -71,7 +71,7 @@
                     </h2>
                     <ul>
                         <li style="margin-left: 12px;">
-                            <a ng-href="/#!/contato/ref/{{tituloPaginaURL}}/aspas/" style="text-decoration: none" href="/#!/contato/ref/{{tituloPaginaURL}}/aspas/">
+                            <a ng-href="/contato/ref/{{tituloPaginaURL}}/aspas/" style="text-decoration: none" href="/contato/ref/{{tituloPaginaURL}}/aspas/">
                                 <div class="calltoaction">Você também tem essa dúvida? </div>
                             </a>
                         </li>
@@ -85,7 +85,7 @@
                                 <h3 class="ng-binding">{{exemplo.title}}</h3>
                                 <div ng-bind-html="exemplo.texto" class="ng-binding"></div>
                                 <div class="link">
-                                    <a ng-href="/#!/contato/ref/{{tituloPaginaURL}}/exemplo/{{exemplo.url}}" href="/#!/contato/ref/{{tituloPaginaURL}}/exemplo/{{exemplo.url}}">quer mais informações?</a>
+                                    <a ng-href="/contato/ref/{{tituloPaginaURL}}/exemplo/{{exemplo.url}}" href="/contato/ref/{{tituloPaginaURL}}/exemplo/{{exemplo.url}}">quer mais informações?</a>
                                 </div>
                             </div>
                         </li>
@@ -103,7 +103,7 @@
         <nav>
             <ul class="list-inline" style="text-align: center; margin: 0 auto; float: none;display: inline-block;">
                 <li ng-repeat="resultado in lista">
-                    <a href="/#!/camposdeinteresse/{{resultado.url}}">
+                    <a href="/camposdeinteresse/{{resultado.url}}">
                         <img src="{{resultado.imagem}}" /><p>{{resultado.title}}</p>
                     </a>
                 </li>
@@ -116,10 +116,10 @@
         <div class="col-md-11" style="text-align: center; margin: 0 auto; float: none;">
             <h2>Qual é o seu perfil?</h2>
             <ul class="list-inline">
-                <li><a href="/#!/segmentos/entidades-de-classe"><img src="/app/img-site/entidades_classe_selected.svg" /><p>entidades de classe</p></a></li>
-                <li><a href="/#!/segmentos/candidatos-a-cargo-publico"><img src="/app/img-site/candidato_cargo_publico_selected.svg" /><p>concursos públicos</p></a></li>
-                <li><a href="/#!/segmentos/servidores-ativos"><img src="/app/img-site/servidores_ativa_selected.svg" /><p>servidores ativos</p></a></li>
-                <li><a href="/#!/segmentos/servidores-inativos"><img src="/app/img-site/aposentadoria_selected.svg" /><p>servidores aposentados</p></a></li>
+                <li><a href="/segmentos/entidades-de-classe"><img src="/app/img-site/entidades_classe_selected.svg" /><p>entidades de classe</p></a></li>
+                <li><a href="/segmentos/candidatos-a-cargo-publico"><img src="/app/img-site/candidato_cargo_publico_selected.svg" /><p>concursos públicos</p></a></li>
+                <li><a href="/segmentos/servidores-ativos"><img src="/app/img-site/servidores_ativa_selected.svg" /><p>servidores ativos</p></a></li>
+                <li><a href="/segmentos/servidores-inativos"><img src="/app/img-site/aposentadoria_selected.svg" /><p>servidores aposentados</p></a></li>
             </ul>
         </div>
     </div>
@@ -205,7 +205,7 @@
             navigationText: ["&lt;", "&gt"]
         });
 
-        
+
     }
     else {
 
