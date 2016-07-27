@@ -35,33 +35,34 @@ app.use(express.static(__dirname + '/public/', { maxAge: 864 * 7 /* 1d */ }));  
 
 function serve(baseName) {
   app.use(`/${baseName}*`, function(req, res){
-    var url = "http://service.prerender.io/http://novo.servidor.adv.br"+req.originalUrl;
-    if (!prerender.shouldShowPrerenderedPage(req))  {
+    var prerenderURL = "http://service.prerender.io/http://novo.servidor.adv.br"+req.originalUrl;
 
-      fine('Procurando no cache... ' + url);
-      client.get(url, function(err, result) {
-        if (err || !result) {
-          fine('Cacheando... ' + url);
-          request(url, function(errorSEO, responseSEO, bodySEO) {
-            client.set(url, bodySEO);
-            fine('Pagina cacheada > ' + url);
-          });
-        }else{
-          fine('Pagina encontrada no cache > ' + url);
-        }
-      });
+    if (!prerender.shouldShowPrerenderedPage(req))  {
+        fine('Procurando no cache... ' + req.originalUrl);
+        client.get(req.originalUrl, function(err, result) {
+          if (err || !result) {
+            fine('Cacheando... ' + req.originalUrl);
+            request(prerenderURL, function(errorSEO, responseSEO, bodySEO) {
+              client.set(req.originalUrl, bodySEO);
+              fine('Pagina cacheada > ' + req.originalUrl);
+            });
+          }else{
+            fine('Pagina encontrada no cache > ' + req.originalUrl);
+          }
+        });
+      }
 
       res.sendFile(__dirname + "/public/index.html");
     }else{
-      client.get(url, function(err, result) {
+      client.get(req.originalUrl, function(err, result) {
         if (!err && result) {
             fine('Enviando pagina cacheada...');
             res.status(200).send(result);
             fine(result);
         } else {
             fine('Cacheando...');
-            request(url, function(errorSEO, responseSEO, bodySEO) {
-              client.set(url, bodySEO);
+            request(prerenderURL, function(errorSEO, responseSEO, bodySEO) {
+              client.set(req.originalUrl, bodySEO);
               fine('Pagina cacheada...');
               res.status(200).send(bodySEO);
             });
