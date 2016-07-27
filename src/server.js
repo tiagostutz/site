@@ -41,6 +41,8 @@ function serve(baseName) {
     }else{
       client.get(url, function(err, result) {
         if (!err && result) {
+            fine('Enviando pagina cacheada...');
+            fine(result);
             res.status(200).send(result);
         } else {
             fine('Cacheando...');
