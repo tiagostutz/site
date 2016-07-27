@@ -44,10 +44,10 @@ function serve(baseName) {
             fine('Cacheando... ' + req.originalUrl);
             request(prerenderURL, function(errorSEO, responseSEO, bodySEO) {
               client.set(req.originalUrl, bodySEO);
-              fine('Pagina cacheada > ' + req.originalUrl);
+              info('Pagina cacheada > ' + req.originalUrl);
             });
           }else{
-            fine('Pagina encontrada no cache > ' + req.originalUrl);
+            info('Pagina encontrada no cache > ' + req.originalUrl);
           }
         });
       }
