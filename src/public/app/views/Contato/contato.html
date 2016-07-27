@@ -2,7 +2,6 @@
     <div class="form-contato">
         <form name="form" id="conversion-form" action="https://servidorapi.azurewebsites.net/api/contatos/criar" method="POST">
             <input name="identificador" type="hidden" value="contato-site">
-            <input name="origem_contato" type="hidden" value="site_default">
             <ul>
                 <li>
                     <input placeholder="SEU NOME" type="text" name="nome" id="nome" onblur="validaBotaoEnviar()" size="30" maxlength="50">
@@ -45,7 +44,7 @@
             </div>
             <div class="actions" align="center" style="margin-top: 20px;">
                 <div class="col span_4_of_12"></div>
-                <input type="hidden" name="origem_contato" id="origemContatoHidden" value="acesso direto" />
+                <input name="origem_contato" type="hidden" value="site_default">
                 <script>
                     if (window.location.href.indexOf("/ref/") != -1) {
                         $("#origemContatoHidden").val(window.location.href.substring(window.location.href.indexOf("/ref/") + 5));
