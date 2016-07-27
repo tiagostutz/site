@@ -35,7 +35,7 @@ app.use(express.static(__dirname + '/public/', { maxAge: 864 * 7 /* 1d */ }));  
 
 function serve(baseName) {
   app.use(`/${baseName}*`, function(req, res){
-    var prerenderURL = "http://service.prerender.io/http://novo.servidor.adv.br"+req.originalUrl;
+    var prerenderURL = "http://prerender:3000/http://novo.servidor.adv.br"+req.originalUrl;
 
     if (!prerender.shouldShowPrerenderedPage(req))  {
 
