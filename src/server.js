@@ -37,6 +37,20 @@ function serve(baseName) {
   app.use(`/${baseName}*`, function(req, res){
     var url = "http://service.prerender.io/http://novo.servidor.adv.br"+req.originalUrl;
     if (!prerender.shouldShowPrerenderedPage(req))  {
+
+      fine('Procurando no cache... ' + url);
+      client.get(url, function(err, result) {
+        if (err || !result) {
+          fine('Cacheando... ' + url);
+          request(url, function(errorSEO, responseSEO, bodySEO) {
+            client.set(url, bodySEO);
+            fine('Pagina cacheada > ' + url);
+          });
+        }else{
+          fine('Pagina encontrada no cache > ' + url);
+        }
+      });
+
       res.sendFile(__dirname + "/public/index.html");
     }else{
       client.get(url, function(err, result) {
