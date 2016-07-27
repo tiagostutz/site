@@ -6,3 +6,8 @@ services:
 
     ports:
       - "8001:8001"
+
+  redis:
+    image: redis:alpine
+    volumes:
+      - /var/app/site/cache:/data
