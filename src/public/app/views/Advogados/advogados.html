@@ -76,6 +76,7 @@
             </div>
             <div class="clear"></div>
         </li>
+
         <li class="descricao desc4">
             <a href="#" class="fechar">fechar</a>
             <div class="box-img">
@@ -269,14 +270,14 @@
             var id = $(this).data("id");
             $('#og-grid .adv a').removeClass('ativo');
             $(this).addClass("ativo");
-            $("#og-grid .descricao.ativo").removeClass("ativo").slideUp();
-            $(".desc" + id).addClass("ativo").slideDown();
+            $("#og-grid .descricao.ativo").removeClass("ativo").hide();
+            $(".desc" + id).addClass("ativo").show();
             return false;
         });
 
         $("#og-grid .descricao a.fechar").click(function () {
             $('#og-grid .adv a').removeClass('ativo');
-            $(".descricao.ativo").removeClass("ativo").slideUp();
+            $(".descricao.ativo").removeClass("ativo").hide();
             return false;
         });
 
