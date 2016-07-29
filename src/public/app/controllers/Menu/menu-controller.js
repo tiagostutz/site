@@ -2,7 +2,7 @@
 
 app.controller('MenuController', function($scope, $location) {
   $scope.menuClass = function(page) {
-    var current = $location.path().substring(1);
+    var current = $location.path();
     if (page.indexOf(';') === -1) {
       return current.indexOf(`/${page}`) !== -1 ? 'active' : '';
     }else{
