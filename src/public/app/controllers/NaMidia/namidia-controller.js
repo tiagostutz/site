@@ -40,6 +40,11 @@
         namidiaAPI.getConteudoRelacionado($scope.item.id, assunto, "1", "0").then(function (data) {
             if (data.statusText == "OK") {
                 $scope.itensRelacionados = data.data.resultado;
+
+                for (var i = 0; i < $scope.itensRelacionados.length; i++) {
+                  $scope.itensRelacionados[i].url = $scope.itensRelacionados[i].url.replace('/#/','/');
+                }
+                
                 $scope.loading = false;
                 $scope.loadingRelacionados = false;
 
